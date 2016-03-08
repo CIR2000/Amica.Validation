@@ -9,6 +9,12 @@
     <Import_RootNamespace>Validators.Core</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AddressExWithNameValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AddressExValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BankValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CompositeValidatorRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CurrencyValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AddressValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ContactValidator.cs" />
   </ItemGroup>
 </Project>
