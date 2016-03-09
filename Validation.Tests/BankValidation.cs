@@ -16,17 +16,6 @@ namespace Validation.Tests
         }
 
 		[Test]
-		public void Name() {
-            var length = 100;
-            validator.ShouldHaveValidationErrorFor(c => c.Name, new string('A', length+1));
-			validator.ShouldHaveValidationErrorFor(c => c.Name, string.Empty);
-
-			validator.ShouldNotHaveValidationErrorFor(c => c.Name, null as string); 
-            validator.ShouldNotHaveValidationErrorFor(c => c.Name, "A");
-            validator.ShouldNotHaveValidationErrorFor(c => c.Name, new string('A', length));
-        }
-
-		[Test]
 		public void IbanCode()
         {
             validator.ShouldHaveValidationErrorFor(c => c.IbanCode, string.Empty);

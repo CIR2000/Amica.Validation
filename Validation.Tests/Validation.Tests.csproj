@@ -64,10 +64,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressExWithNameValidation.cs" />
-    <Compile Include="AddressAndAddressExValidation.cs" />
+    <Compile Include="AddressExValidation.cs" />
     <Compile Include="BankValidation.cs" />
-    <Compile Include="CurrencyValidation.cs" />
     <Compile Include="ContactValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

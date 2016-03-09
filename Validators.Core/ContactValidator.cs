@@ -8,9 +8,7 @@ namespace Amica.vNext.Validation
     {
 		public ContactValidator()
         {
-            RuleFor(contact => contact.Name).NotNull().Length(1, 60);
-            RuleFor(contact => contact.IdCode).Length(1, 10);
-            RuleFor(contact => contact.MarketArea).Length(1, 40);
+            RuleFor(contact => contact.Name).NotEmpty();
 
             RuleFor(contact => contact.Vat).Must(BeValidVatNumber).When(contact => contact.Vat != null);
 		    RuleFor(contact => contact.TaxIdentificationNumber).Must(BeValidTaxIdNumber).When(c => c.TaxIdentificationNumber != null);
@@ -21,11 +19,10 @@ namespace Amica.vNext.Validation
             RuleFor(contact => contact.Is).Must(BeValidContactKind);
 
             RuleFor(contact => contact.Address).SetValidator(new AddressExValidator());
-            RuleFor(contact => contact.Currency).SetValidator(new CurrencyValidator());
             RuleFor(contact => contact.Bank).SetValidator(new BankValidator());
 
             RuleFor(contact => contact.OtherAddresses).
-                SetCollectionValidator(new AddressExWithNameValidator());
+                SetCollectionValidator(new AddressExValidator());
 
 
         }

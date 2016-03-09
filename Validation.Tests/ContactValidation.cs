@@ -20,25 +20,12 @@ namespace Validation.Tests
 		public void Name() {
 			_validator.ShouldHaveValidationErrorFor(c => c.Name, null as string); 
 			_validator.ShouldHaveValidationErrorFor(c => c.Name, string.Empty);
-            _validator.ShouldHaveValidationErrorFor(c => c.Name, new string('A', 61));
 
-            _validator.ShouldNotHaveValidationErrorFor(c => c.Name, "A");
-            _validator.ShouldNotHaveValidationErrorFor(c => c.Name, new string('A', 60));
-        }
-
-		[Test]
-		public void IdCode() {
-            var length = 10;
-			_validator.ShouldHaveValidationErrorFor(c => c.IdCode, string.Empty);
-            _validator.ShouldHaveValidationErrorFor(c => c.IdCode, new string('A', length+1));
-
-            _validator.ShouldNotHaveValidationErrorFor(c => c.IdCode, null as string);
             _validator.ShouldNotHaveValidationErrorFor(c => c.IdCode, "A");
-            _validator.ShouldNotHaveValidationErrorFor(c => c.IdCode, new string('A', length));
         }
 
 		[Test]
-		public void TaxIdCode() {
+		public void TaxIdentificationNumber() {
             var invalid = new string[]
             {
                 string.Empty,
@@ -78,17 +65,6 @@ namespace Validation.Tests
         }
 
 		[Test]
-		public void MarketArea() {
-            const int length = 40;
-			_validator.ShouldHaveValidationErrorFor(c => c.MarketArea, string.Empty);
-            _validator.ShouldHaveValidationErrorFor(c => c.MarketArea, new string('A', length+1));
-
-            _validator.ShouldNotHaveValidationErrorFor(c => c.MarketArea, null as string);
-            _validator.ShouldNotHaveValidationErrorFor(c => c.MarketArea, "A");
-            _validator.ShouldNotHaveValidationErrorFor(c => c.MarketArea, new string('A', length));
-        }
-
-		[Test]
 		public void PublicAdministrationIndex() {
             const int length = 6;
 			_validator.ShouldHaveValidationErrorFor(c => c.PublicAdministrationIndex, string.Empty);
@@ -117,17 +93,12 @@ namespace Validation.Tests
         }
 
 		[Test]
-		public void Currency() {
-            _validator.ShouldHaveChildValidator(c => c.Currency, typeof(CurrencyValidator));
-        }
-
-		[Test]
 		public void Bank() {
             _validator.ShouldHaveChildValidator(c => c.Bank, typeof(BankValidator));
         }
 		[Test]
 		public void OtherAddresses() {
-            _validator.ShouldHaveChildValidator(c => c.OtherAddresses, typeof(AddressExWithNameValidator));
+            _validator.ShouldHaveChildValidator(c => c.OtherAddresses, typeof(AddressExValidator));
         }
     }
 }
