@@ -10,7 +10,7 @@ namespace Amica.vNext.Validation
         {
             RuleFor(contact => contact.Name).NotEmpty();
 
-            RuleFor(contact => contact.Vat).Must(BeValidVatNumber).When(contact => contact.Vat != null);
+            RuleFor(contact => contact.VatIdentificationNumber).Must(BeValidVatNumber).When(contact => contact.VatIdentificationNumber != null);
 		    RuleFor(contact => contact.TaxIdentificationNumber).Must(BeValidTaxIdNumber).When(c => c.TaxIdentificationNumber != null);
 
             RuleFor(contact => contact.PublicAdministrationIndex).Length(6);
@@ -50,7 +50,7 @@ namespace Amica.vNext.Validation
             if (string.IsNullOrEmpty(taxIdCode))
                 return false;
 
-            if (taxIdCode.Length == 11 && (taxIdCode.StartsWith("9") || taxIdCode.StartsWith("8")) && taxIdCode.Length == 11) 
+            if (taxIdCode.Length == 11 && (taxIdCode.StartsWith("9") || taxIdCode.StartsWith("8"))) 
 				return IsItalianVatNumber(taxIdCode);
 
             if (taxIdCode.Length != 16)

@@ -57,11 +57,11 @@ namespace Validation.Tests
         public void Vat() {
             var invalid = new string[] {string.Empty, "A", "01180680399", "UK01180680397", "IT01180680399"};
 			foreach(var idCode in invalid)
-				_validator.ShouldHaveValidationErrorFor(c => c.Vat, idCode);
+				_validator.ShouldHaveValidationErrorFor(c => c.VatIdentificationNumber, idCode);
 
             var valid = new string[] {null as string, "01180680397", "IT01180680397", "02182030391", "IT02182030391", "92078790398"};
 			foreach(var idCode in valid)
-				_validator.ShouldNotHaveValidationErrorFor(c => c.Vat, idCode);
+				_validator.ShouldNotHaveValidationErrorFor(c => c.VatIdentificationNumber, idCode);
         }
 
 		[Test]

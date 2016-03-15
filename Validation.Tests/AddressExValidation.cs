@@ -21,7 +21,7 @@ namespace Validation.Tests
             validator.ShouldHaveValidationErrorFor(c => c.Mail, "fakeemail");
             validator.ShouldHaveValidationErrorFor(c => c.Mail, "mail@mail");
             validator.ShouldHaveValidationErrorFor(c => c.Mail, "@mail.it");
-            validator.ShouldHaveValidationErrorFor(c => c.Mail, "@mail");
+            validator.ShouldHaveValidationErrorFor(c => c.Mail, @"test\@test@iana.org");
 			validator.ShouldNotHaveValidationErrorFor(c => c.Mail, "mail@mail.it.com"); 
 
 			validator.ShouldNotHaveValidationErrorFor(c => c.Mail, "mail@mail.it"); 
