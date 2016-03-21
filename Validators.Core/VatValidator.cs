@@ -1,4 +1,5 @@
-﻿using Amica.vNext.Models;
+﻿using System.Linq;
+using Amica.vNext.Models;
 using Amica.vNext.Models.ItalianPA;
 using FluentValidation;
 
@@ -17,7 +18,7 @@ namespace Amica.vNext.Validation
 
 		private static bool BeValidNaturaPA(NaturaPA challenge)
         {
-            return PACollections.NaturaPA.Contains(challenge);
+            return challenge.Code != null && PACollections.NaturaPA.ContainsKey(challenge.Code);
         }
     }
 }

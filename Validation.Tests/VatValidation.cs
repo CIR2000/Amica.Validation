@@ -40,7 +40,7 @@ namespace Validation.Tests
 
             validator.ShouldNotHaveValidationErrorFor(c => c.NaturaPA, null as NaturaPA);
             foreach (var n in PACollections.NaturaPA)
-                validator.ShouldNotHaveValidationErrorFor(c => c.NaturaPA, n);
+                validator.ShouldNotHaveValidationErrorFor(c => c.NaturaPA, (NaturaPA)n.Value);
         }
 
 
