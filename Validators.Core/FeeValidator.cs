@@ -4,9 +4,9 @@ using FluentValidation;
 
 namespace Amica.vNext.Validation
 {
-    public class ChargeValidator : AbstractValidator<Charge>
+    public class FeeValidator : AbstractValidator<Fee>
     {
-		public ChargeValidator()
+		public FeeValidator()
         {
             RuleFor(charge => charge.Name).NotEmpty();
             RuleFor(charge => charge.Vat).SetValidator(new VatValidator());

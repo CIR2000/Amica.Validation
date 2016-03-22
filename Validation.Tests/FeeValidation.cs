@@ -7,14 +7,14 @@ using Amica.vNext.Models;
 namespace Validation.Tests
 {
     [TestFixture]
-    public class ChargeValidation
+    public class FeeValidation
     {
-        private ChargeValidator validator;
+        private FeeValidator validator;
 
 		[SetUp]
 		public void Init()
         {
-            validator = new ChargeValidator();
+            validator = new FeeValidator();
         }
 
 		[Test]
