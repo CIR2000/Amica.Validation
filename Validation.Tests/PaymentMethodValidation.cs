@@ -6,14 +6,14 @@ using FluentValidation.TestHelper;
 namespace Validation.Tests
 {
     [TestFixture]
-    public class PaymentOptionValidation
+    public class PaymentMethodValidation
     {
-        private PaymentOptionValidator validator;
+        private PaymentMethodValidator validator;
 
 		[SetUp]
 		public void Init()
         {
-            validator = new PaymentOptionValidator();
+            validator = new PaymentMethodValidator();
         }
 
 		[Test]

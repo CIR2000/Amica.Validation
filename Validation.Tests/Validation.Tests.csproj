@@ -65,7 +65,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddressExValidation.cs" />
-    <Compile Include="PaymentOptionValidation.cs" />
+    <Compile Include="PaymentValidation.cs" />
+    <Compile Include="PaymentMethodValidation.cs" />
     <Compile Include="FeeValidation.cs" />
     <Compile Include="VatValidation.cs" />
     <Compile Include="BankValidation.cs" />

@@ -4,14 +4,14 @@ using FluentValidation;
 
 namespace Amica.vNext.Validation
 {
-    public class PaymentOptionValidator : AbstractValidator<PaymentOption>
+    public class PaymentMethodValidator : AbstractValidator<PaymentMethod>
     {
-		public PaymentOptionValidator()
+		public PaymentMethodValidator()
         {
-            RuleFor(option => option.Name).NotEmpty();
+            RuleFor(method => method.Name).NotEmpty();
 
-            RuleFor(option => option.ModalitaPagamentoPA)
-				.Must(BeValidModalitaPagamentoPA).When(option => option.ModalitaPagamentoPA != null);
+            RuleFor(method => method.ModalitaPagamentoPA)
+				.Must(BeValidModalitaPagamentoPA).When(method => method.ModalitaPagamentoPA != null);
         }
 
 		private static bool BeValidModalitaPagamentoPA(ModalitaPagamentoPA challenge)
