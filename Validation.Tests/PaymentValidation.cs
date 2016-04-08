@@ -28,17 +28,15 @@ namespace Validation.Tests
 		public void FirstPaymentOption()
         {
             validator.ShouldHaveValidationErrorFor(p => p.FirstPaymentOption, null as FirstPaymentOption);
-            validator.ShouldHaveValidationErrorFor(p => p.FirstPaymentOption, new FirstPaymentOption { Code = 999 });
 
-            validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentOption, PaymentOptions.FirstPaymentOptions[1]);
+            validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentOption, PaymentHelpers.FirstPaymentOptions[PaymentOption.Normal]);
         }
 		[Test]
 		public void FirstPaymentDate()
         {
             validator.ShouldHaveValidationErrorFor(p => p.FirstPaymentDate, null as FirstPaymentDate);
-            validator.ShouldHaveValidationErrorFor(p => p.FirstPaymentDate, new FirstPaymentDate { Code = 999 });
 
-            validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentDate, PaymentOptions.FirstPaymentDates[1]);
+            validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentDate, PaymentHelpers.FirstPaymentDates[PaymentDate.DocumentDate]);
         }
 		[Test]
 		public void Fee()

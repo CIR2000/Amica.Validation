@@ -12,9 +12,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)AddressExValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BankValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CompositeValidatorRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PaymentMethodValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PaymentValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FeeValidator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)PaymentMethodValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VatValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ContactValidator.cs" />
   </ItemGroup>

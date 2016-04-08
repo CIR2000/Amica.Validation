@@ -31,8 +31,8 @@ namespace Validation.Tests
             validator.ShouldHaveValidationErrorFor(o => o.ModalitaPagamentoPA, new ModalitaPagamentoPA { Code = "hello" });
 
             validator.ShouldNotHaveValidationErrorFor(o => o.ModalitaPagamentoPA, null as ModalitaPagamentoPA);
-            foreach (var n in PACollections.ModalitaPagamentoPA)
-                validator.ShouldNotHaveValidationErrorFor(o => o.ModalitaPagamentoPA, (ModalitaPagamentoPA)n.Value);
+            foreach (var n in PAHelpers.ModalitaPagamentoPA)
+                validator.ShouldNotHaveValidationErrorFor(o => o.ModalitaPagamentoPA, n.Value);
         }
 
 
