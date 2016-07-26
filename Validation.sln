@@ -1,60 +1,30 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Models.Core", "..\Models\Models.Core\Models.Core.shproj", "{71612766-1264-488D-8064-B3BDADC6D61F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "..\Models\Models\Models.csproj", "{38931933-1E9D-4DF3-BDDE-75E81E3234F4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models.Net4", "..\Models\Models.Net4\Models.Net4.csproj", "{678D3308-5DE9-4335-B0C8-1E0820B7515C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "vNext.Models", "vNext.Models", "{B3858B17-A596-496E-9239-66C020407CBA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "..\Models\Models\Models.csproj", "{5A48FA69-73DE-47FD-A391-289F6F76C434}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators", "Validators\Validators.csproj", "{3C64305E-4EAC-43E8-B7DF-745E54B0CAEB}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Validators.Core", "Validators.Core\Validators.Core.shproj", "{04DABE07-4E83-4947-B071-D52C1D66C0FF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eve.Net4", "..\..\Eve.NET\Eve.Net4\Eve.Net4.csproj", "{C5DEAD7A-1511-4516-9334-420CE21D3DC8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eve", "..\..\Eve.NET\Eve\Eve.csproj", "{DD88D007-AD10-470D-9C89-AA8EE39857D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validation.Tests", "Validation.Tests\Validation.Tests.csproj", "{CB68CAC4-9193-452E-8AA5-A3B0D90DC8B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Net4", "Validators.Net4\Validators.Net4.csproj", "{8EDB842F-9628-4ED3-8B6F-39E7B064E2C9}"
-EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\..\Eve.NET\Eve.Core\Eve.Core.projitems*{c5dead7a-1511-4516-9334-420ce21d3dc8}*SharedItemsImports = 4
-		Validators.Core\Validators.Core.projitems*{04dabe07-4e83-4947-b071-d52c1d66c0ff}*SharedItemsImports = 13
-		..\Models\Models.Core\Models.Core.projitems*{71612766-1264-488d-8064-b3bdadc6d61f}*SharedItemsImports = 13
-		..\..\Eve.NET\Eve.Core\Eve.Core.projitems*{dd88d007-ad10-470d-9c89-aa8ee39857d0}*SharedItemsImports = 4
-		Validators.Core\Validators.Core.projitems*{3c64305e-4eac-43e8-b7df-745e54b0caeb}*SharedItemsImports = 4
-		Validators.Core\Validators.Core.projitems*{8edb842f-9628-4ed3-8b6f-39e7b064e2c9}*SharedItemsImports = 4
-		..\Models\Models.Core\Models.Core.projitems*{678d3308-5de9-4335-b0c8-1e0820b7515c}*SharedItemsImports = 4
-		..\Models\Models.Core\Models.Core.projitems*{38931933-1e9d-4df3-bdde-75e81e3234f4}*SharedItemsImports = 4
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{38931933-1E9D-4DF3-BDDE-75E81E3234F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38931933-1E9D-4DF3-BDDE-75E81E3234F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38931933-1E9D-4DF3-BDDE-75E81E3234F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38931933-1E9D-4DF3-BDDE-75E81E3234F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{678D3308-5DE9-4335-B0C8-1E0820B7515C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{678D3308-5DE9-4335-B0C8-1E0820B7515C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{678D3308-5DE9-4335-B0C8-1E0820B7515C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{678D3308-5DE9-4335-B0C8-1E0820B7515C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A48FA69-73DE-47FD-A391-289F6F76C434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A48FA69-73DE-47FD-A391-289F6F76C434}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A48FA69-73DE-47FD-A391-289F6F76C434}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A48FA69-73DE-47FD-A391-289F6F76C434}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3C64305E-4EAC-43E8-B7DF-745E54B0CAEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3C64305E-4EAC-43E8-B7DF-745E54B0CAEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C64305E-4EAC-43E8-B7DF-745E54B0CAEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C64305E-4EAC-43E8-B7DF-745E54B0CAEB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5DEAD7A-1511-4516-9334-420CE21D3DC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5DEAD7A-1511-4516-9334-420CE21D3DC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5DEAD7A-1511-4516-9334-420CE21D3DC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5DEAD7A-1511-4516-9334-420CE21D3DC8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DD88D007-AD10-470D-9C89-AA8EE39857D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DD88D007-AD10-470D-9C89-AA8EE39857D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD88D007-AD10-470D-9C89-AA8EE39857D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,19 +33,8 @@ Global
 		{CB68CAC4-9193-452E-8AA5-A3B0D90DC8B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB68CAC4-9193-452E-8AA5-A3B0D90DC8B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB68CAC4-9193-452E-8AA5-A3B0D90DC8B3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8EDB842F-9628-4ED3-8B6F-39E7B064E2C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8EDB842F-9628-4ED3-8B6F-39E7B064E2C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8EDB842F-9628-4ED3-8B6F-39E7B064E2C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8EDB842F-9628-4ED3-8B6F-39E7B064E2C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{71612766-1264-488D-8064-B3BDADC6D61F} = {B3858B17-A596-496E-9239-66C020407CBA}
-		{38931933-1E9D-4DF3-BDDE-75E81E3234F4} = {B3858B17-A596-496E-9239-66C020407CBA}
-		{678D3308-5DE9-4335-B0C8-1E0820B7515C} = {B3858B17-A596-496E-9239-66C020407CBA}
-		{C5DEAD7A-1511-4516-9334-420CE21D3DC8} = {B3858B17-A596-496E-9239-66C020407CBA}
-		{DD88D007-AD10-470D-9C89-AA8EE39857D0} = {B3858B17-A596-496E-9239-66C020407CBA}
 	EndGlobalSection
 EndGlobal
