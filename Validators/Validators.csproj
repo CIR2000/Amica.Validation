@@ -54,7 +54,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Models, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Models.0.1.0\lib\portable45-net45+win8+wp8+wpa81\Models.dll</HintPath>
+      <HintPath>..\packages\Amica.Models.0.1.0\lib\portable45-net45+win8+wp8+wpa81\Models.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
