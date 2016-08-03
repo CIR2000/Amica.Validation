@@ -21,7 +21,7 @@ namespace Validation.Tests
 			_validator.ShouldHaveValidationErrorFor(c => c.Name, null as string); 
 			_validator.ShouldHaveValidationErrorFor(c => c.Name, string.Empty);
 
-            _validator.ShouldNotHaveValidationErrorFor(c => c.IdCode, "A");
+            _validator.ShouldNotHaveValidationErrorFor(c => c.Name, "A");
         }
 
 		[Test]
