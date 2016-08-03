@@ -9,6 +9,7 @@ namespace Amica.vNext.Validation
     {
 		public BankValidator()
         {
+            RuleFor(bank => bank.Name).NotEmpty();
             RuleFor(bank => bank.IbanCode).Must(BeValidIbanCode).When(bank => bank.IbanCode != null);
             RuleFor(bank => bank.BicSwiftCode).Must(BeValidSwiftCode).When(bank => bank.BicSwiftCode != null);
         }
