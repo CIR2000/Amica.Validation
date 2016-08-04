@@ -17,7 +17,10 @@ namespace Amica.vNext.Validation
 
 		private static bool BeValidNaturaPA(NaturaPA challenge)
         {
-            return challenge.Code != null && PAHelpers.NaturaPA.ContainsKey(challenge.Code);
+            return (
+                challenge.Code != null && PAHelpers.NaturaPA.ContainsKey(challenge.Code) &&
+                challenge.Description != null && PAHelpers.NaturaPA[challenge.Code].Description == challenge.Description
+                );
         }
     }
 }

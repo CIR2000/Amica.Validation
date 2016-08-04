@@ -36,7 +36,10 @@ namespace Validation.Tests
 		[Test]
 		public void PublicAdministrationNature()
         {
+            validator.ShouldHaveValidationErrorFor(c => c.NaturaPA, new NaturaPA ());
             validator.ShouldHaveValidationErrorFor(c => c.NaturaPA, new NaturaPA { Code = "hello" });
+            validator.ShouldHaveValidationErrorFor(c => c.NaturaPA, new NaturaPA { Code = "MP01" });
+            validator.ShouldHaveValidationErrorFor(c => c.NaturaPA, new NaturaPA { Code = "MP01", Description = "fail" });
 
             validator.ShouldNotHaveValidationErrorFor(c => c.NaturaPA, null as NaturaPA);
             foreach (var n in PAHelpers.NaturaPA)
