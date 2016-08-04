@@ -16,7 +16,10 @@ namespace Amica.vNext.Validation
 
 		private static bool BeValidModalitaPagamentoPA(ModalitaPagamentoPA challenge)
         {
-            return challenge.Code != null && PAHelpers.ModalitaPagamentoPA.ContainsKey(challenge.Code);
+            return (
+                challenge.Code != null && PAHelpers.ModalitaPagamentoPA.ContainsKey(challenge.Code) &&
+                challenge.Description != null && PAHelpers.ModalitaPagamentoPA[challenge.Code].Description == challenge.Description
+                );
         }
     }
 }
