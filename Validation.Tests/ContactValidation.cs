@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using Amica.vNext.Validation;
+using Amica.Validation;
 using FluentValidation.TestHelper;
 using Amica.Models;
 

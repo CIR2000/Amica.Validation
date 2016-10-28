@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
-using Amica.vNext.Validation;
+using Amica.Validation;
 using Amica.Models.ItalianPA;
 using FluentValidation.TestHelper;
 
-namespace Validation.Tests
+namespace Amica.Validation.Tests
 {
     [TestFixture]
     public class VatValidation

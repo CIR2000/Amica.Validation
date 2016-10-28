@@ -2,7 +2,7 @@
 using Amica.Models.ItalianPA;
 using FluentValidation;
 
-namespace Amica.vNext.Validation
+namespace Amica.Validation
 {
     public class VatValidator : AbstractValidator<Vat>
     {

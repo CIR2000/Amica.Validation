@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using Amica.Models;
-using Amica.vNext.Validation;
+using Amica.Validation;
 using FluentValidation.TestHelper;
 
-namespace Validation.Tests
+namespace Amica.Validation.Tests
 {
     [TestFixture]
     public class PaymentValidation

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using Amica.Models;
 
-namespace Amica.vNext.Validation
+namespace Amica.Validation
 {
     public class AddressExValidator : AbstractValidator<AddressEx>
     {

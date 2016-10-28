@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using FluentValidation.Results;
 
-namespace Amica.vNext.Validation
+namespace Amica.Validation
 {
 public class CompositeValidatorRule : IValidationRule
 {

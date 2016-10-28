@@ -7,8 +7,8 @@
     <ProjectGuid>{CB68CAC4-9193-452E-8AA5-A3B0D90DC8B3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Validation.Tests</RootNamespace>
-    <AssemblyName>Validation.Tests</AssemblyName>
+    <RootNamespace>Amica.Validation.Tests</RootNamespace>
+    <AssemblyName>Amica.Validation.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

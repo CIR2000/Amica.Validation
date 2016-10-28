@@ -3,7 +3,7 @@ using FluentValidation;
 using System.Text.RegularExpressions;
 using System.Text;
 
-namespace Amica.vNext.Validation
+namespace Amica.Validation
 {
     public class BankValidator : AbstractValidator<Bank>
     {

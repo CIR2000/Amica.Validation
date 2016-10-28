@@ -2,7 +2,7 @@
 using Amica.Models;
 using FluentValidation;
 
-namespace Amica.vNext.Validation
+namespace Amica.Validation
 {
     public class PaymentValidator : AbstractValidator<Payment>
     {
