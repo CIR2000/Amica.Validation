@@ -1,5 +1,5 @@
-﻿using Amica.vNext.Models;
-using Amica.vNext.Models.ItalianPA;
+﻿using Amica.Models;
+using Amica.Models.ItalianPA;
 using FluentValidation;
 
 namespace Amica.vNext.Validation

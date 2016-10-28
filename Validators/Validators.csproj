@@ -45,16 +45,16 @@
     <Compile Include="VatValidator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Amica.Models, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Amica.Models.0.0.1\lib\portable45-net45+win8+wp8+wpa81\Amica.Models.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Eve, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Eve.NET.0.2.0\lib\portable45-net45+win8+wp8+wpa81\Eve.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentValidation.6.2.1.0\lib\portable-net45+wp80+win8+wpa81\FluentValidation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Models, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Amica.Models.0.1.0\lib\portable45-net45+win8+wp8+wpa81\Models.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

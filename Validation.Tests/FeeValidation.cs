@@ -1,8 +1,6 @@
 ﻿using NUnit.Framework;
 using Amica.vNext.Validation;
-using Amica.vNext.Models.ItalianPA;
 using FluentValidation.TestHelper;
-using Amica.vNext.Models;
 
 namespace Validation.Tests
 {

@@ -1,4 +1,4 @@
-﻿using Amica.vNext.Models;
+﻿using Amica.Models;
 using FluentValidation;
 using System.Text.RegularExpressions;
 using System.Text;

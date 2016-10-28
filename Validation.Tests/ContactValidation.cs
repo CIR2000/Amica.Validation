@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using Amica.vNext.Validation;
 using FluentValidation.TestHelper;
-using Amica.vNext.Models;
+using Amica.Models;
 
 namespace Validation.Tests
 {
