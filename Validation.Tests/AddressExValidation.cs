@@ -24,7 +24,8 @@ namespace Amica.Validation.Tests
             validator.ShouldHaveValidationErrorFor(c => c.Mail, @"test\@test@iana.org");
 			validator.ShouldNotHaveValidationErrorFor(c => c.Mail, "mail@mail.it.com"); 
 
-			validator.ShouldNotHaveValidationErrorFor(c => c.Mail, "mail@mail.it"); 
+			validator.ShouldNotHaveValidationErrorFor(c => c.Mail, "mail@mail.it");
+            validator.ShouldNotHaveValidationErrorFor(c => c.Mail, value:null);
         }
 		[Test]
 		public void PecMail() {
@@ -36,6 +37,7 @@ namespace Amica.Validation.Tests
 			validator.ShouldNotHaveValidationErrorFor(c => c.PecMail, "mail@mail.it.com"); 
 
 			validator.ShouldNotHaveValidationErrorFor(c => c.PecMail, "mail@mail.it"); 
+            validator.ShouldNotHaveValidationErrorFor(c => c.PecMail, value:null);
         }
 
     }
