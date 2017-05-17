@@ -3,31 +3,20 @@ using Amica.Models;
 using Amica.Validation;
 using FluentValidation.TestHelper;
 
-namespace Amica.Validation.Tests
+namespace Validation.Tests
 {
     [TestFixture]
-    public class PaymentValidation
+    public class PaymentValidation : BaseTestClass<Payment, PaymentValidator>
     {
-        private PaymentValidator validator;
-
-		[SetUp]
-		public void Init()
-        {
-            validator = new PaymentValidator();
-        }
-
 		[Test]
 		public void NameIsRequired()
         {
-            validator.ShouldHaveValidationErrorFor(p => p.Name, string.Empty);
-            validator.ShouldHaveValidationErrorFor(p => p.Name,value:null);
-
-            validator.ShouldNotHaveValidationErrorFor(p => p.Name, "payment1");
+            AssertRequired(p => p.Name);
         }
 		[Test]
 		public void FirstPaymentOptionIsRequired()
         {
-            validator.ShouldHaveValidationErrorFor(p => p.FirstPaymentOption, value:null);
+            AssertRequired(p => p.FirstPaymentOption);
         }
 		[Test]
 		public void FirstPaymentOptionMustBeValid()
@@ -38,12 +27,11 @@ namespace Amica.Validation.Tests
 		[Test]
 		public void FirstPaymentDateIsRequired()
         {
-            validator.ShouldHaveValidationErrorFor(p => p.FirstPaymentDate, value:null);
+            AssertRequired(p => p.FirstPaymentDate);
         }
 		[Test]
 		public void FirstPaymentDateMustBeValid()
         {
-            validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentDate, PaymentHelpers.FirstPaymentDates[PaymentDate.DocumentDate]);
             foreach (var d in PaymentHelpers.FirstPaymentDates)
                 validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentDate, d.Value);
         }

@@ -2,35 +2,30 @@
 using Amica.Validation;
 using Amica.Models.ItalianPA;
 using FluentValidation.TestHelper;
+using Amica.Models;
 
-namespace Amica.Validation.Tests
+namespace Validation.Tests
 {
     [TestFixture]
-    public class PaymentMethodValidation
+    public class PaymentMethodValidation : BaseTestClass<PaymentMethod, PaymentMethodValidator>
     {
-        private PaymentMethodValidator validator;
-
-		[SetUp]
-		public void Init()
-        {
-            validator = new PaymentMethodValidator();
-        }
-
 		[Test]
 		public void NameIsRequired()
         {
-            validator.ShouldHaveValidationErrorFor(o => o.Name, string.Empty);
-            validator.ShouldHaveValidationErrorFor(o => o.Name,value:null);
-
-            validator.ShouldNotHaveValidationErrorFor(o => o.Name, "name");
+            AssertRequired(o => o.Name);
+        }
+		[Test]
+		public void ModalitaPagamentoPAIsOptional()
+        {
+            AssertOptional(o => o.ModalitaPagamentoPA);
         }
 
 		[Test]
 		public void ModalitaPagamentoPAMustBeValid()
         {
-            validator.ShouldHaveValidationErrorFor(o => o.ModalitaPagamentoPA, new ModalitaPagamentoPA { Code = "hello" });
+            validator.ShouldHaveValidationErrorFor(
+                o => o.ModalitaPagamentoPA, new ModalitaPagamentoPA { Code = "hello" });
 
-            validator.ShouldNotHaveValidationErrorFor(o => o.ModalitaPagamentoPA, value:null);
             foreach (var n in PAHelpers.ModalitaPagamentoPA)
                 validator.ShouldNotHaveValidationErrorFor(o => o.ModalitaPagamentoPA, n.Value);
         }

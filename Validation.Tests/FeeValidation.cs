@@ -1,34 +1,22 @@
 ﻿using NUnit.Framework;
 using Amica.Validation;
 using FluentValidation.TestHelper;
+using Amica.Models;
 
 namespace Validation.Tests
 {
     [TestFixture]
-    public class FeeValidation
+    public class FeeValidation : BaseTestClass<Fee, FeeValidator>
     {
-        private FeeValidator validator;
-
-		[SetUp]
-		public void Init()
-        {
-            validator = new FeeValidator();
-        }
-
 		[Test]
 		public void NameIsRequired()
         {
-            validator.ShouldHaveValidationErrorFor(c => c.Name, string.Empty);
-            validator.ShouldHaveValidationErrorFor(c => c.Name, value:null);
-
-            validator.ShouldNotHaveValidationErrorFor(c => c.Name, "name");
+            AssertRequired(c => c.Name);
         }
 		[Test]
 		public void VatHasChildValidator()
         {
             validator.ShouldHaveChildValidator(c => c.Vat, typeof(VatValidator));
         }
-
-
     }
 }

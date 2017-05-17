@@ -2,35 +2,22 @@
 using Amica.Validation;
 using Amica.Models.ItalianPA;
 using FluentValidation.TestHelper;
+using Amica.Models;
 
-namespace Amica.Validation.Tests
+namespace Validation.Tests
 {
     [TestFixture]
-    public class VatValidation
+    public class VatValidation : BaseTestClass<Vat, VatValidator>
     {
-        private VatValidator validator;
-
-		[SetUp]
-		public void Init()
-        {
-            validator = new VatValidator();
-        }
-
 		[Test]
 		public void CodeIsRequired()
         {
-            validator.ShouldHaveValidationErrorFor(c => c.Code, string.Empty);
-            validator.ShouldHaveValidationErrorFor(c => c.Code, value:null);
-
-            validator.ShouldNotHaveValidationErrorFor(c => c.Code, "code");
+            AssertRequired(c => c.Code);
         }
 		[Test]
 		public void NameIsRequired()
         {
-            validator.ShouldHaveValidationErrorFor(c => c.Name, string.Empty);
-            validator.ShouldHaveValidationErrorFor(c => c.Name, value:null);
-
-            validator.ShouldNotHaveValidationErrorFor(c => c.Name, "name");
+            AssertRequired(c => c.Name);
         }
 		[Test]
 		public void PublicAdministrationNatureMustBeValid()
@@ -40,7 +27,7 @@ namespace Amica.Validation.Tests
             validator.ShouldHaveValidationErrorFor(c => c.NaturaPA, new NaturaPA { Code = "MP01" });
             validator.ShouldHaveValidationErrorFor(c => c.NaturaPA, new NaturaPA { Code = "MP01", Description = "fail" });
 
-            validator.ShouldNotHaveValidationErrorFor(c => c.NaturaPA, value:null);
+            AssertOptional(c => c.NaturaPA);
             foreach (var n in PAHelpers.NaturaPA)
                 validator.ShouldNotHaveValidationErrorFor(c => c.NaturaPA, n.Value);
         }
