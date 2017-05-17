@@ -59,7 +59,7 @@ namespace Validation.Tests
         }
 		[Test]
 		public void OtherAddressesHasChildValidator() {
-            validator.ShouldHaveChildValidator(c => c.OtherAddresses, typeof(AddressExValidator));
+            validator.ShouldHaveChildValidator(c => c.OtherAddresses, typeof(ShippingAddressValidator));
         }
     }
 }
