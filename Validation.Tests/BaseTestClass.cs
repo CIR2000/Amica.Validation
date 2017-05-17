@@ -87,6 +87,27 @@ namespace Validation.Tests
             prop.SetValue(challenge, new string(filler, length));
             validator.ShouldNotHaveValidationErrorFor(outExpr, challenge);
         }
+        protected void AssertValidEmail(Expression<Func<TClass, string>> outExpr)
+        {
+            var prop = GetProperty(outExpr);
+            prop.SetValue(challenge, string.Empty);
+			validator.ShouldHaveValidationErrorFor(outExpr, challenge);
+            prop.SetValue(challenge, "fakeemail");
+            validator.ShouldHaveValidationErrorFor(outExpr, challenge);
+            prop.SetValue(challenge, "mail@mail");
+            validator.ShouldHaveValidationErrorFor(outExpr, challenge);
+            prop.SetValue(challenge, "@mail.it");
+            validator.ShouldHaveValidationErrorFor(outExpr, challenge);
+            prop.SetValue(challenge, @"test\@test@iana.org");
+            validator.ShouldHaveValidationErrorFor(outExpr, challenge);
+            prop.SetValue(challenge,  "mail@mail.it.com");
+			validator.ShouldNotHaveValidationErrorFor(outExpr, challenge); 
+
+            prop.SetValue(challenge,  "mail@mail.it");
+			validator.ShouldNotHaveValidationErrorFor(outExpr, challenge);
+            prop.SetValue(challenge,  null);
+            validator.ShouldNotHaveValidationErrorFor(outExpr, challenge);
+        }
         protected void AssertValidVatIdentificationNumber(Expression<Func<TClass, string>> outExpr)
         {
             var prop = GetProperty(outExpr);

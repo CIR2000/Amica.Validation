@@ -1,43 +1,21 @@
 ﻿using NUnit.Framework;
 using Amica.Validation;
-using FluentValidation.TestHelper;
+using Amica.Models;
 
-namespace Amica.Validation.Tests
+namespace Validation.Tests
 {
     [TestFixture]
-    public class AddressExValidation
+    public class AddressExValidation : BaseTestClass<AddressEx, AddressExValidator>
     {
-        private AddressExValidator validator;
-
-		[SetUp]
-		public void Init()
+		[Test]
+		public void MailMustBeValid()
         {
-            validator = new AddressExValidator();
-        }
-
-		[Test]
-		public void MailMustBeValid() {
-			validator.ShouldHaveValidationErrorFor(c => c.Mail, string.Empty);
-            validator.ShouldHaveValidationErrorFor(c => c.Mail, "fakeemail");
-            validator.ShouldHaveValidationErrorFor(c => c.Mail, "mail@mail");
-            validator.ShouldHaveValidationErrorFor(c => c.Mail, "@mail.it");
-            validator.ShouldHaveValidationErrorFor(c => c.Mail, @"test\@test@iana.org");
-			validator.ShouldNotHaveValidationErrorFor(c => c.Mail, "mail@mail.it.com"); 
-
-			validator.ShouldNotHaveValidationErrorFor(c => c.Mail, "mail@mail.it");
-            validator.ShouldNotHaveValidationErrorFor(c => c.Mail, value:null);
+            AssertValidEmail(c => c.Mail);
         }
 		[Test]
-		public void PecMailMustBeValid() {
-			validator.ShouldHaveValidationErrorFor(c => c.PecMail, string.Empty);
-            validator.ShouldHaveValidationErrorFor(c => c.PecMail, "fakeemail");
-            validator.ShouldHaveValidationErrorFor(c => c.PecMail, "mail@mail");
-            validator.ShouldHaveValidationErrorFor(c => c.PecMail, "@mail.it");
-            validator.ShouldHaveValidationErrorFor(c => c.PecMail, "@mail");
-			validator.ShouldNotHaveValidationErrorFor(c => c.PecMail, "mail@mail.it.com"); 
-
-			validator.ShouldNotHaveValidationErrorFor(c => c.PecMail, "mail@mail.it"); 
-            validator.ShouldNotHaveValidationErrorFor(c => c.PecMail, value:null);
+		public void PecMailMustBeValid()
+        {
+            AssertValidEmail(c => c.PecMail);
         }
 
     }
