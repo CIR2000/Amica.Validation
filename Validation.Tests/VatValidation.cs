@@ -17,31 +17,30 @@ namespace Amica.Validation.Tests
         }
 
 		[Test]
-		public void Code()
+		public void CodeIsRequired()
         {
             validator.ShouldHaveValidationErrorFor(c => c.Code, string.Empty);
-            validator.ShouldHaveValidationErrorFor(c => c.Code, null as string);
+            validator.ShouldHaveValidationErrorFor(c => c.Code, value:null);
 
             validator.ShouldNotHaveValidationErrorFor(c => c.Code, "code");
         }
-
 		[Test]
-		public void Name()
+		public void NameIsRequired()
         {
             validator.ShouldHaveValidationErrorFor(c => c.Name, string.Empty);
-            validator.ShouldHaveValidationErrorFor(c => c.Name, null as string);
+            validator.ShouldHaveValidationErrorFor(c => c.Name, value:null);
 
             validator.ShouldNotHaveValidationErrorFor(c => c.Name, "name");
         }
 		[Test]
-		public void PublicAdministrationNature()
+		public void PublicAdministrationNatureMustBeValid()
         {
             validator.ShouldHaveValidationErrorFor(c => c.NaturaPA, new NaturaPA ());
             validator.ShouldHaveValidationErrorFor(c => c.NaturaPA, new NaturaPA { Code = "hello" });
             validator.ShouldHaveValidationErrorFor(c => c.NaturaPA, new NaturaPA { Code = "MP01" });
             validator.ShouldHaveValidationErrorFor(c => c.NaturaPA, new NaturaPA { Code = "MP01", Description = "fail" });
 
-            validator.ShouldNotHaveValidationErrorFor(c => c.NaturaPA, null as NaturaPA);
+            validator.ShouldNotHaveValidationErrorFor(c => c.NaturaPA, value:null);
             foreach (var n in PAHelpers.NaturaPA)
                 validator.ShouldNotHaveValidationErrorFor(c => c.NaturaPA, n.Value);
         }

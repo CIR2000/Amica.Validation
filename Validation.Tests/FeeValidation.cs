@@ -16,15 +16,15 @@ namespace Validation.Tests
         }
 
 		[Test]
-		public void Name()
+		public void NameIsRequired()
         {
             validator.ShouldHaveValidationErrorFor(c => c.Name, string.Empty);
-            validator.ShouldHaveValidationErrorFor(c => c.Name, null as string);
+            validator.ShouldHaveValidationErrorFor(c => c.Name, value:null);
 
             validator.ShouldNotHaveValidationErrorFor(c => c.Name, "name");
         }
 		[Test]
-		public void Vat()
+		public void VatHasChildValidator()
         {
             validator.ShouldHaveChildValidator(c => c.Vat, typeof(VatValidator));
         }

@@ -10,8 +10,12 @@ namespace Amica.Validation
         {
             RuleFor(contact => contact.Name).NotEmpty();
 
-            RuleFor(contact => contact.VatIdentificationNumber).Must(BeValidVatNumber).When(contact => contact.VatIdentificationNumber != null);
-		    RuleFor(contact => contact.TaxIdentificationNumber).Must(BeValidTaxIdNumber).When(c => c.TaxIdentificationNumber != null);
+            RuleFor(contact => contact.VatIdentificationNumber)
+                .Must(BeValidVatNumber)
+                .When(contact => contact.VatIdentificationNumber != null);
+		    RuleFor(contact => contact.TaxIdentificationNumber)
+                .Must(BeValidTaxIdNumber)
+                .When(c => c.TaxIdentificationNumber != null);
 
             RuleFor(contact => contact.PublicAdministrationIndex).Length(6);
 
@@ -23,8 +27,6 @@ namespace Amica.Validation
 
             RuleFor(contact => contact.OtherAddresses).
                 SetCollectionValidator(new AddressExValidator());
-
-
         }
 
 		private static bool BeValidContactKind(ContactIs contactIs)

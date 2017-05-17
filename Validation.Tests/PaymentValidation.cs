@@ -17,44 +17,50 @@ namespace Amica.Validation.Tests
         }
 
 		[Test]
-		public void Name()
+		public void NameIsRequired()
         {
             validator.ShouldHaveValidationErrorFor(p => p.Name, string.Empty);
-            validator.ShouldHaveValidationErrorFor(p => p.Name, null as string);
+            validator.ShouldHaveValidationErrorFor(p => p.Name,value:null);
 
             validator.ShouldNotHaveValidationErrorFor(p => p.Name, "payment1");
         }
 		[Test]
-		public void FirstPaymentOption()
+		public void FirstPaymentOptionIsRequired()
         {
-            validator.ShouldHaveValidationErrorFor(p => p.FirstPaymentOption, null as FirstPaymentOption);
-
-            validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentOption, PaymentHelpers.FirstPaymentOptions[PaymentOption.Normal]);
+            validator.ShouldHaveValidationErrorFor(p => p.FirstPaymentOption, value:null);
         }
 		[Test]
-		public void FirstPaymentDate()
+		public void FirstPaymentOptionMustBeValid()
         {
-            validator.ShouldHaveValidationErrorFor(p => p.FirstPaymentDate, null as FirstPaymentDate);
-
+            foreach (var o in PaymentHelpers.FirstPaymentOptions)
+                validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentOption, o.Value);
+        }
+		[Test]
+		public void FirstPaymentDateIsRequired()
+        {
+            validator.ShouldHaveValidationErrorFor(p => p.FirstPaymentDate, value:null);
+        }
+		[Test]
+		public void FirstPaymentDateMustBeValid()
+        {
             validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentDate, PaymentHelpers.FirstPaymentDates[PaymentDate.DocumentDate]);
+            foreach (var d in PaymentHelpers.FirstPaymentDates)
+                validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentDate, d.Value);
         }
 		[Test]
-		public void Fee()
+		public void FeeHasChildValidator()
         {
-            validator.ShouldNotHaveValidationErrorFor(p => p.Fee, null as Fee);
-            validator.ShouldNotHaveValidationErrorFor(p => p.Fee, new Fee());
+            validator.ShouldHaveChildValidator(p => p.Fee, typeof(FeeValidator));
         }
 		[Test]
-		public void Bank()
+		public void BankHasChildValidator()
         {
-            validator.ShouldNotHaveValidationErrorFor(p => p.Bank, null as Bank);
-            validator.ShouldNotHaveValidationErrorFor(p => p.Bank, new Bank());
+            validator.ShouldHaveChildValidator(p => p.Bank, typeof(BankValidator));
         }
 		[Test]
-		public void PaymentMethod()
+		public void PaymentMethodHasChildValidator()
         {
-            validator.ShouldNotHaveValidationErrorFor(p => p.PaymentMethod, null as PaymentMethod);
-            validator.ShouldNotHaveValidationErrorFor(p => p.PaymentMethod, new PaymentMethod());
+            validator.ShouldHaveChildValidator(p => p.PaymentMethod, typeof(PaymentMethodValidator));
         }
     }
 }

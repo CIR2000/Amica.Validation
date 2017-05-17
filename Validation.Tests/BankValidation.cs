@@ -16,30 +16,32 @@ namespace Amica.Validation.Tests
         }
 
 		[Test]
-		public void Name() {
+		public void NameIsRequired()
+        { 
 			_validator.ShouldHaveValidationErrorFor(c => c.Name, null as string); 
 			_validator.ShouldHaveValidationErrorFor(c => c.Name, string.Empty);
 
             _validator.ShouldNotHaveValidationErrorFor(c => c.Name, "A");
         }
 		[Test]
-		public void IbanCode()
+		public void IbanCodeMustBeValid()
         {
             _validator.ShouldHaveValidationErrorFor(c => c.IbanCode, string.Empty);
             _validator.ShouldHaveValidationErrorFor(c => c.IbanCode, "ABC");
             _validator.ShouldHaveValidationErrorFor(c => c.IbanCode, "88T1927501600CC0010110180");
 
             _validator.ShouldNotHaveValidationErrorFor(c => c.IbanCode, "IT88T1927501600CC0010110180");
+            _validator.ShouldNotHaveValidationErrorFor(c => c.IbanCode, value:null);
         }
 
 		[Test]
-		public void SwitCode() {
+		public void SwitCodeMustBeValid() {
 
             _validator.ShouldHaveValidationErrorFor(c => c.BicSwiftCode, string.Empty);
             _validator.ShouldHaveValidationErrorFor(c => c.BicSwiftCode, "A");
             _validator.ShouldHaveValidationErrorFor(c => c.BicSwiftCode, "12345678901");
 
-            _validator.ShouldNotHaveValidationErrorFor(c => c.BicSwiftCode, null as string); 
+            _validator.ShouldNotHaveValidationErrorFor(c => c.BicSwiftCode, value:null); 
             _validator.ShouldNotHaveValidationErrorFor(c => c.BicSwiftCode, "ABCOITMM"); 
             _validator.ShouldNotHaveValidationErrorFor(c => c.BicSwiftCode, "ICRAITRRL90"); 
             _validator.ShouldNotHaveValidationErrorFor(c => c.BicSwiftCode, "CRGEITGG183"); 

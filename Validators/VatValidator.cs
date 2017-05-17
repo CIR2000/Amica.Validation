@@ -11,16 +11,16 @@ namespace Amica.Validation
             RuleFor(vat => vat.Name).NotEmpty();
             RuleFor(vat => vat.Code).NotEmpty();
 
-            RuleFor(vat => vat.NaturaPA)
-				.Must(BeValidNaturaPA).When(vat => vat.NaturaPA != null);
+            RuleFor(vat => vat.NaturaPA).Must(BeValidNaturaPA);
         }
 
 		private static bool BeValidNaturaPA(NaturaPA challenge)
         {
             return (
-                challenge.Code != null && PAHelpers.NaturaPA.ContainsKey(challenge.Code) &&
+                challenge is null ||
+                (challenge.Code != null && PAHelpers.NaturaPA.ContainsKey(challenge.Code) &&
                 challenge.Description != null && PAHelpers.NaturaPA[challenge.Code].Description == challenge.Description
-                );
+                ));
         }
     }
 }

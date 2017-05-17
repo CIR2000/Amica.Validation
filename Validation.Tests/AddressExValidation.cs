@@ -16,7 +16,7 @@ namespace Amica.Validation.Tests
         }
 
 		[Test]
-		public void Mail() {
+		public void MailMustBeValid() {
 			validator.ShouldHaveValidationErrorFor(c => c.Mail, string.Empty);
             validator.ShouldHaveValidationErrorFor(c => c.Mail, "fakeemail");
             validator.ShouldHaveValidationErrorFor(c => c.Mail, "mail@mail");
@@ -28,7 +28,7 @@ namespace Amica.Validation.Tests
             validator.ShouldNotHaveValidationErrorFor(c => c.Mail, value:null);
         }
 		[Test]
-		public void PecMail() {
+		public void PecMailMustBeValid() {
 			validator.ShouldHaveValidationErrorFor(c => c.PecMail, string.Empty);
             validator.ShouldHaveValidationErrorFor(c => c.PecMail, "fakeemail");
             validator.ShouldHaveValidationErrorFor(c => c.PecMail, "mail@mail");

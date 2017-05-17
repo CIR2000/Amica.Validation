@@ -17,20 +17,20 @@ namespace Amica.Validation.Tests
         }
 
 		[Test]
-		public void Name()
+		public void NameIsRequired()
         {
             validator.ShouldHaveValidationErrorFor(o => o.Name, string.Empty);
-            validator.ShouldHaveValidationErrorFor(o => o.Name, null as string);
+            validator.ShouldHaveValidationErrorFor(o => o.Name,value:null);
 
             validator.ShouldNotHaveValidationErrorFor(o => o.Name, "name");
         }
 
 		[Test]
-		public void ModalitaPagamentoPA()
+		public void ModalitaPagamentoPAMustBeValid()
         {
             validator.ShouldHaveValidationErrorFor(o => o.ModalitaPagamentoPA, new ModalitaPagamentoPA { Code = "hello" });
 
-            validator.ShouldNotHaveValidationErrorFor(o => o.ModalitaPagamentoPA, null as ModalitaPagamentoPA);
+            validator.ShouldNotHaveValidationErrorFor(o => o.ModalitaPagamentoPA, value:null);
             foreach (var n in PAHelpers.ModalitaPagamentoPA)
                 validator.ShouldNotHaveValidationErrorFor(o => o.ModalitaPagamentoPA, n.Value);
         }
