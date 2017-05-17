@@ -88,6 +88,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactDetailsExValidation.cs" />
     <Compile Include="AddressExValidation.cs" />
     <Compile Include="BaseTestClass.cs" />
     <Compile Include="BillingAddressValidation.cs" />
