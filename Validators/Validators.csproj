@@ -35,6 +35,7 @@
     <DocumentationFile>..\bin\Release\Amica.Validation.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BillingAddressValidator.cs" />
     <Compile Include="AddressExValidator.cs" />
     <Compile Include="BankValidator.cs" />
     <Compile Include="CompositeValidatorRule.cs" />
@@ -43,6 +44,7 @@
     <Compile Include="PaymentMethodValidator.cs" />
     <Compile Include="PaymentValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidatorHelpers.cs" />
     <Compile Include="VatValidator.cs" />
   </ItemGroup>
   <ItemGroup>

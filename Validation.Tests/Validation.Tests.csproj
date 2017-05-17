@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="AddressExValidation.cs" />
     <Compile Include="BaseTestClass.cs" />
+    <Compile Include="BillingAddressValidation.cs" />
     <Compile Include="PaymentValidation.cs" />
     <Compile Include="PaymentMethodValidation.cs" />
     <Compile Include="FeeValidation.cs" />

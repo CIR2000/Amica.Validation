@@ -6,12 +6,13 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Linq;
 using System.Collections.Generic;
+using Amica.Models;
 
 namespace Validation.Tests
 {
     [TestFixture]
     public abstract class BaseTestClass<TClass, TValidator> 
-        where TClass : Amica.Models.ObservableObject
+        where TClass : ObservableObject, new()
         where TValidator : IValidator<TClass>
     {
         protected TValidator validator;
@@ -86,20 +87,56 @@ namespace Validation.Tests
             prop.SetValue(challenge, new string(filler, length));
             validator.ShouldNotHaveValidationErrorFor(outExpr, challenge);
         }
-        //protected void AssertOnlyAcceptsTableValues<T>(Expression<Func<TClass, string>> outExpr, string expectedErrorCode=null) where T: Tabella, new()
-        //{
-        //    var prop = GetProperty(outExpr);
+        protected void AssertValidVatIdentificationNumber(Expression<Func<TClass, string>> outExpr)
+        {
+            var prop = GetProperty(outExpr);
 
-        //    prop.SetValue(challenge, "hello");
-        //    var r = validator.Validate(challenge);
-        //    validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorCode(expectedErrorCode);
+            var invalid = new string[] {string.Empty, "A", "01180680399", "UK01180680397", "IT01180680399"};
+			foreach(var idCode in invalid)
+            {
+                prop.SetValue(challenge, idCode);
+				validator.ShouldHaveValidationErrorFor(outExpr, idCode);
+            }
 
-        //    foreach (var codice in new T().Codici)
-        //    {
-        //        prop.SetValue(challenge, codice);
-        //        validator.ShouldNotHaveValidationErrorFor(outExpr, challenge);
-        //    }
-        //}
+            var valid = new string[] {null, "01180680397", "IT01180680397", "02182030391", "IT02182030391", "92078790398"};
+            foreach (var idCode in valid)
+            {
+                prop.SetValue(challenge, idCode);
+				validator.ShouldNotHaveValidationErrorFor(outExpr, value:idCode);
+            }
+        }
+        protected void AssertValidTaxIdentificationNumber(Expression<Func<TClass, string>> outExpr)
+        {
+            var prop = GetProperty(outExpr);
+
+            var invalid = new string[]
+            {
+                string.Empty,
+				// last char is wrong
+                "RCCNCL70M27B519Z",
+				// too short
+				"8012345678", "9012345678",
+				// too long
+				"801234567890", "901234567890",
+				// not valid
+				"80123456789", "90123456789"
+            };
+            foreach (var idCode in invalid)
+            {
+                prop.SetValue(challenge, idCode);
+                validator.ShouldHaveValidationErrorFor(outExpr, value:idCode);
+            }
+
+
+            var valid = new string[] {
+                null,
+                "RCCNCL70M27B519E", "grdsfn66d17h199k",
+                "92078790398", "95052810132", "94078890541", "90029830669",
+                "81004300067", "80064390372", "80028050583", "80007770102", "80003350891"
+            };
+            foreach (var idCode in valid)
+                validator.ShouldNotHaveValidationErrorFor(outExpr, value: idCode);
+        }
         protected void AssertCollectionCanBeEmpty<T>(Expression<Func<TClass, List<T>>> outExpr)
         {
             var prop = GetProperty(outExpr);
