@@ -42,24 +42,25 @@ namespace Validation.Tests
         protected void AssertRequired<T>(Expression<Func<TClass, T>> outExpr, string expectedErrorCode=null)
         {
             var prop = GetProperty(outExpr);
+            var type = typeof(T);
 
             if (expectedErrorCode == null)
             {
-                expectedErrorCode = (typeof(T) != typeof(string)) ?  "notnull_error" :  "notempty_error";
+                expectedErrorCode = 
+                    (type != typeof(string) && !IsNumericType(type)) ?  "notnull_error" :  "notempty_error";
             }
 
             prop.SetValue(challenge, null);
             var r = validator.Validate(challenge);
             validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorCode(expectedErrorCode);
 
-            if (typeof(T) == typeof(string))
+            if (type == typeof(string))
             {
                 prop.SetValue(challenge, string.Empty);
                 validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorCode(expectedErrorCode);
             }
 
-            // TODO this should probably take other numeric types into consideration.
-            if (typeof(T) == typeof(decimal))
+            if (IsNumericType(type))
             {
                 prop.SetValue(challenge, 0);
                 validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorCode(expectedErrorCode);
@@ -177,6 +178,18 @@ namespace Validation.Tests
         {
             var expr = (MemberExpression)outExpr.Body;
             return (PropertyInfo)expr.Member;
+        }
+        private static HashSet<Type> NumericTypes = new HashSet<Type>
+        {
+            typeof(int),
+            typeof(uint),
+            typeof(double),
+            typeof(decimal),
+            typeof(long),
+        };
+        private static bool IsNumericType(Type type)
+        {
+            return NumericTypes.Contains(type) || NumericTypes.Contains(Nullable.GetUnderlyingType(type));
         }
     }
 }
