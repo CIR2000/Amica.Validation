@@ -1,5 +1,4 @@
-﻿using Amica.Models;
-using Amica.Models.Documents;
+﻿using Amica.Models.Documents;
 using FluentValidation;
 
 namespace Amica.Validation
@@ -10,6 +9,5 @@ namespace Amica.Validation
         {
             RuleFor(number => number.Numeric).NotEmpty();
         }
-
     }
 }

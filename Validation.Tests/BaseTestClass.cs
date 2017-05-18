@@ -47,7 +47,9 @@ namespace Validation.Tests
             if (expectedErrorCode == null)
             {
                 expectedErrorCode = 
-                    (type != typeof(string) && !IsNumericType(type)) ?  "notnull_error" :  "notempty_error";
+                    (type != typeof(string) && 
+                    !IsNumericType(type) &&
+                    !type.IsEnum) ?  "notnull_error" :  "notempty_error";
             }
 
             prop.SetValue(challenge, null);
