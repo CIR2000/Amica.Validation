@@ -88,6 +88,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DocumentPaymentValidator.cs" />
     <Compile Include="DocumentCurrencyValidation.cs" />
     <Compile Include="DocumentCategoryValidation.cs" />
     <Compile Include="DocumentStatusValidation.cs" />
