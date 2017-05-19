@@ -35,6 +35,8 @@
     <DocumentationFile>..\bin\Release\Amica.Validation.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ShippingTermValidator.cs" />
+    <Compile Include="ShippingValidator.cs" />
     <Compile Include="DocumentPaymentValidator.cs" />
     <Compile Include="DocumentValidator.cs" />
     <Compile Include="DocumentCurrencyValidator.cs" />

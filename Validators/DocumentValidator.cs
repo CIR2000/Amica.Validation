@@ -20,6 +20,15 @@ namespace Amica.Validation
             RuleFor(d => d.Payment)
                 .NotNull()
                 .SetValidator(new DocumentPaymentValidator());
+            RuleFor(d => d.BillTo)
+                .NotNull()
+                .SetValidator(new BillingAddressValidator());
+            RuleFor(d => d.ShipTo)
+                .NotNull()
+                .SetValidator(new ShippingAddressValidator());
+            RuleFor(d => d.Agent)
+                .NotNull()
+                .SetValidator(new ContactDetailsExValidator());
         }
     }
 }
