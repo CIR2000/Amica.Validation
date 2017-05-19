@@ -6,7 +6,7 @@ namespace Amica.Validation
 {
     public class VatValidator : AbstractValidator<Vat>
     {
-		public VatValidator()
+        public VatValidator()
         {
             RuleFor(vat => vat.Name).NotEmpty();
             RuleFor(vat => vat.Code).NotEmpty();
