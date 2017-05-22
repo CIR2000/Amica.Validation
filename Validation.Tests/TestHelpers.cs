@@ -6,9 +6,7 @@ using System.Reflection;
 
 namespace Amica.Validation.Tests
 {
-    // Adapted from http://devio.wordpress.com/2011/01/21/get-name-of-nested-property-as-string-value/
-
-    public static class Helpers
+    public static class TestHelpers
     {
         public static string GetPropertyName<T, TValue>(this T model, Expression<Func<T, TValue>> expression) where T : class
         {

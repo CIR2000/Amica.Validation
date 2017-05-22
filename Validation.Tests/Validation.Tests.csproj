@@ -90,7 +90,7 @@
   <ItemGroup>
     <Compile Include="DocumentItemValidation.cs" />
     <Compile Include="DocumentValidation.cs" />
-    <Compile Include="Helper.cs" />
+    <Compile Include="TestHelpers.cs" />
     <Compile Include="OrderReferenceValidation.cs" />
     <Compile Include="DocumentItemDetailValidation.cs" />
     <Compile Include="DocumentItemLotValidation.cs" />
