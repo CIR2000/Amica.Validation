@@ -112,13 +112,13 @@ namespace Validation.Tests
 
             challenge.Category = DocumentHelpers.Categories[DocumentCategory.DeliveryNote];
             validator.ShouldHaveNestedValidationErrorFor(d => d.Shipping.Terms, challenge);
-            challenge.Shipping.Terms = DocumentHelpers.TransportTerms[DocumentShippingTerm.DeliveredDutyPaid];
+            challenge.Shipping.Terms = DocumentHelpers.ShippingTerms[DocumentShippingTerm.DeliveredDutyPaid];
             validator.ShouldNotHaveNestedValidationErrorFor(d => d.Shipping.Terms, challenge);
 
             challenge.Shipping.Terms = null;
             challenge.Category = DocumentHelpers.Categories[DocumentCategory.ShippingInvoice];
             validator.ShouldHaveNestedValidationErrorFor(d => d.Shipping.Terms, challenge);
-            challenge.Shipping.Terms = DocumentHelpers.TransportTerms[DocumentShippingTerm.DeliveredDutyPaid];
+            challenge.Shipping.Terms = DocumentHelpers.ShippingTerms[DocumentShippingTerm.DeliveredDutyPaid];
             validator.ShouldNotHaveNestedValidationErrorFor(d => d.Shipping.Terms, challenge);
         }
 		[Test]
