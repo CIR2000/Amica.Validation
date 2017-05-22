@@ -38,6 +38,7 @@
     <Compile Include="DocumentItemLotValidator.cs" />
     <Compile Include="DocumentItemSizeValidator.cs" />
     <Compile Include="DocumentFeeValidator.cs" />
+    <Compile Include="DocumentValidator - Copy.cs" />
     <Compile Include="VariationCategoryValidation.cs" />
     <Compile Include="SocialSecurityCategoryValidator.cs" />
     <Compile Include="ShippingTermValidator.cs" />
