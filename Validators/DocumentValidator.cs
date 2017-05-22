@@ -39,6 +39,7 @@ namespace Amica.Validation
             RuleFor(d => d.SocialSecurityCollection).SetCollectionValidator(new SocialSecurityValidator());
             RuleFor(d => d.VariationCollection).SetCollectionValidator(new VariationValidator());
             RuleFor(d => d.FeeCollection).SetCollectionValidator(new DocumentFeeValidator());
+            RuleFor(d => d.ItemCollection).SetCollectionValidator(new DocumentItemValidator());
         }
     }
 }

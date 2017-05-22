@@ -88,6 +88,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="documentitem.cs" />
+    <Compile Include="DocumentItemValidation.cs" />
     <Compile Include="OrderReferenceValidation.cs" />
     <Compile Include="DocumentItemDetailValidation.cs" />
     <Compile Include="DocumentItemLotValidation.cs" />
