@@ -36,6 +36,8 @@ namespace Amica.Validation
                 .NotNull()
                 .When(d => d.Category.Code == DocumentCategory.ShippingInvoice || d.Category.Code == DocumentCategory.DeliveryNote);
             RuleFor(d => d.Bank).SetValidator(new BankValidator());
+            RuleFor(d => d.SocialSecurityCollection).SetCollectionValidator(new SocialSecurityValidator());
+            RuleFor(d => d.VariationCollection).SetCollectionValidator(new VariationValidator());
         }
     }
 }

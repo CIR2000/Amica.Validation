@@ -88,7 +88,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ShippingValidator.cs" />
+    <Compile Include="VariationValidation.cs" />
+    <Compile Include="VariationCategoryValidation.cs" />
+    <Compile Include="SocialSecurityValidation.cs" />
+    <Compile Include="SocialSecurityCategoryValidation.cs" />
+    <Compile Include="ShippingValidation.cs" />
     <Compile Include="ShippingTermValidation.cs" />
     <Compile Include="DocumentPaymentValidator.cs" />
     <Compile Include="DocumentCurrencyValidation.cs" />
