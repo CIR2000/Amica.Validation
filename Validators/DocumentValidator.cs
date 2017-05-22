@@ -20,21 +20,18 @@ namespace Amica.Validation
             RuleFor(d => d.Payment)
                 .NotNull()
                 .SetValidator(new DocumentPaymentValidator());
+            RuleFor(d => d.Currency)
+                .NotNull()
+                .SetValidator(new DocumentCurrencyValidator());
             RuleFor(d => d.BillTo)
                 .NotNull()
                 .SetValidator(new BillingAddressValidator());
-            RuleFor(d => d.ShipTo)
-                .NotNull()
-                .SetValidator(new ShippingAddressValidator());
-            RuleFor(d => d.Agent)
-                .NotNull()
-                .SetValidator(new ContactDetailsExValidator());
-            RuleFor(d => d.Shipping.Courier)
-                .NotNull()
-                .When(d => d.Shipping.TransportMode.Code == DocumentTransportMode.Courier);
+            RuleFor(d => d.Agent).SetValidator(new ContactDetailsExValidator());
+            RuleFor(d => d.ShipTo).SetValidator(new ShippingAddressValidator());
+            RuleFor(d => d.Shipping).SetValidator(new ShippingValidator());
             RuleFor(d => d.Shipping.Terms)
                 .NotNull()
-                .When(d => d.Category.Code == DocumentCategory.ShippingInvoice || d.Category.Code == DocumentCategory.DeliveryNote);
+                .When(d => d.Category?.Code == DocumentCategory.ShippingInvoice || d.Category?.Code == DocumentCategory.DeliveryNote);
             RuleFor(d => d.Bank).SetValidator(new BankValidator());
             RuleFor(d => d.SocialSecurityCollection).SetCollectionValidator(new SocialSecurityValidator());
             RuleFor(d => d.VariationCollection).SetCollectionValidator(new VariationValidator());
