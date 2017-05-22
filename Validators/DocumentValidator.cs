@@ -29,6 +29,13 @@ namespace Amica.Validation
             RuleFor(d => d.Agent)
                 .NotNull()
                 .SetValidator(new ContactDetailsExValidator());
+            RuleFor(d => d.Shipping.Courier)
+                .NotNull()
+                .When(d => d.Shipping.TransportMode.Code == DocumentTransportMode.Courier);
+            RuleFor(d => d.Shipping.Terms)
+                .NotNull()
+                .When(d => d.Category.Code == DocumentCategory.ShippingInvoice || d.Category.Code == DocumentCategory.DeliveryNote);
+            RuleFor(d => d.Bank).SetValidator(new BankValidator());
         }
     }
 }
