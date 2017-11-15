@@ -17,7 +17,7 @@ namespace Validation.Tests
         public void CourierIsRequiredWhenTransportModeIsSetToCourier()
         {
             challenge.TransportMode = DocumentHelpers.TransportModes[DocumentTransportMode.Courier];
-            validator.ShouldHaveValidationErrorFor(s => s.Courier, challenge).WithErrorCode("notnull_error");
+            validator.ShouldHaveValidationErrorFor(s => s.Courier, challenge).WithErrorCode("NotNullValidator");
             challenge.TransportMode = DocumentHelpers.TransportModes[DocumentTransportMode.Sender];
             validator.ShouldNotHaveValidationErrorFor(s => s.Courier, challenge);
         }

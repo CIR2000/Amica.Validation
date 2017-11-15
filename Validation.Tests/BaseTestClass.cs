@@ -49,7 +49,7 @@ namespace Validation.Tests
                 expectedErrorCode = 
                     (type != typeof(string) && 
                     !IsNumericType(type) &&
-                    !type.IsEnum) ?  "notnull_error" :  "notempty_error";
+                    !type.IsEnum) ?  "NotNullValidator" :  "NotEmptyValidator";
             }
 
             prop.SetValue(challenge, null);

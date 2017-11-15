@@ -24,7 +24,7 @@ namespace Validation.Tests
 		public void NumberIsRequired()
         {
             challenge.Number = null;
-            validator.ShouldHaveValidationErrorFor(d => d.Number, challenge).WithErrorCode("notnull_error");
+            validator.ShouldHaveValidationErrorFor(d => d.Number, challenge).WithErrorCode("NotNullValidator");
             challenge.Number = new DocumentNumber();
             validator.ShouldNotHaveValidationErrorFor(d => d.Number, challenge);
         }
@@ -37,7 +37,7 @@ namespace Validation.Tests
 		public void StatusIsRequired()
         {
             challenge.Status = null;
-            validator.ShouldHaveValidationErrorFor(d => d.Status, challenge).WithErrorCode("notnull_error");
+            validator.ShouldHaveValidationErrorFor(d => d.Status, challenge).WithErrorCode("NotNullValidator");
             challenge.Status = new Status();  
             validator.ShouldNotHaveValidationErrorFor(d => d.Status, challenge);
         }
@@ -50,7 +50,7 @@ namespace Validation.Tests
 		public void CategoryIsRequired()
         {
             challenge.Category = null;
-            validator.ShouldHaveValidationErrorFor(d => d.Category, challenge).WithErrorCode("notnull_error");
+            validator.ShouldHaveValidationErrorFor(d => d.Category, challenge).WithErrorCode("NotNullValidator");
             challenge.Category = new Category();
             validator.ShouldNotHaveValidationErrorFor(d => d.Category, challenge);
         }
@@ -63,7 +63,7 @@ namespace Validation.Tests
 		public void PaymentIsRequired()
         {
             challenge.Payment = null;
-            validator.ShouldHaveValidationErrorFor(d => d.Payment, challenge).WithErrorCode("notnull_error");
+            validator.ShouldHaveValidationErrorFor(d => d.Payment, challenge).WithErrorCode("NotNullValidator");
             challenge.Payment = new DocumentPayment();
             validator.ShouldNotHaveValidationErrorFor(d => d.Payment, challenge);
         }
@@ -76,7 +76,7 @@ namespace Validation.Tests
 		public void CurrencyIsRequired()
         {
             challenge.Currency = null;
-            validator.ShouldHaveValidationErrorFor(d => d.Currency, challenge).WithErrorCode("notnull_error");
+            validator.ShouldHaveValidationErrorFor(d => d.Currency, challenge).WithErrorCode("NotNullValidator");
             challenge.Currency = new DocumentCurrency();
             validator.ShouldNotHaveValidationErrorFor(d => d.Currency, challenge);
         }
@@ -89,7 +89,7 @@ namespace Validation.Tests
 		public void BillToIsRequired()
         {
             challenge.BillTo = null;
-            validator.ShouldHaveValidationErrorFor(d => d.BillTo, challenge).WithErrorCode("notnull_error");
+            validator.ShouldHaveValidationErrorFor(d => d.BillTo, challenge).WithErrorCode("NotNullValidator");
             challenge.BillTo = new BillingAddress();
             validator.ShouldNotHaveValidationErrorFor(d => d.BillTo, challenge);
         }
