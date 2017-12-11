@@ -79,7 +79,7 @@ namespace Validation.Tests
             prop.SetValue(challenge, new string(filler, max));
             validator.ShouldNotHaveValidationErrorFor(outExpr, challenge);
         }
-        protected void AssertLength(Expression<Func<TClass, string>> outExpr, int length, char filler='x', string expectedErrorCode="exact_length_error")
+        protected void AssertLength(Expression<Func<TClass, string>> outExpr, int length, char filler='x', string expectedErrorCode="ExactLengthValidator")
         {
             var prop = GetProperty(outExpr);
 
