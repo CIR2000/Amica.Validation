@@ -39,13 +39,13 @@ namespace Validation.Tests
 
         [Test]
         public void ContactIsMustBeValid() {
-            validator.ShouldHaveValidationErrorFor(c => c.Is, new ContactIs());
+            validator.ShouldHaveValidationErrorFor(c => c.Relationship, new Relationship());
 
-            validator.ShouldNotHaveValidationErrorFor(c => c.Is, new ContactIs { Client = true });
-            validator.ShouldNotHaveValidationErrorFor(c => c.Is, new ContactIs { Vendor = true });
-            validator.ShouldNotHaveValidationErrorFor(c => c.Is, new ContactIs { Courier = true });
-            validator.ShouldNotHaveValidationErrorFor(c => c.Is, new ContactIs { Agent = true });
-            validator.ShouldNotHaveValidationErrorFor(c => c.Is, new ContactIs { AreaManager = true });
+            validator.ShouldNotHaveValidationErrorFor(c => c.Relationship, new Relationship { IsClient = true });
+            validator.ShouldNotHaveValidationErrorFor(c => c.Relationship, new Relationship { IsVendor = true });
+            validator.ShouldNotHaveValidationErrorFor(c => c.Relationship, new Relationship { IsCourier = true });
+            validator.ShouldNotHaveValidationErrorFor(c => c.Relationship, new Relationship { IsAgent = true });
+            validator.ShouldNotHaveValidationErrorFor(c => c.Relationship, new Relationship { IsAreaManager = true });
         }
 
 		[Test]

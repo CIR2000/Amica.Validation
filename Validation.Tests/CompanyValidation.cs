@@ -16,26 +16,26 @@ namespace Validation.Tests
         [Test]
         public void CodiceReaLength()
         {
-            AssertLength(c => c.CodiceRea, 9);
+            AssertLength(c => c.REACode, 9);
         }
         [Test]
         public void CodiceSiaLength()
         {
-            AssertLength(c => c.CodiceSia, 5);
+            AssertLength(c => c.SIACode, 5);
         }
 		[Test]
 		public void PredefinizioniVatNameIsRequired()
         {
-            validator.ShouldHaveValidationErrorFor(c => c.Predefinizioni.Vat.Name, challenge);
-            challenge.Predefinizioni.Vat.Name = "name";
-            validator.ShouldNotHaveValidationErrorFor(c => c.Predefinizioni.Vat.Name, challenge);
+            validator.ShouldHaveValidationErrorFor(c => c.Preferences.Vat.Name, challenge);
+            challenge.Preferences.Vat.Name = "name";
+            validator.ShouldNotHaveValidationErrorFor(c => c.Preferences.Vat.Name, challenge);
         }
 		[Test]
 		public void PredefinizioniVatCodeIsRequired()
         {
-            validator.ShouldHaveValidationErrorFor(c => c.Predefinizioni.Vat.Code, challenge);
-            challenge.Predefinizioni.Vat.Code = "code";
-            validator.ShouldNotHaveValidationErrorFor(c => c.Predefinizioni.Vat.Code, challenge);
+            validator.ShouldHaveValidationErrorFor(c => c.Preferences.Vat.Code, challenge);
+            challenge.Preferences.Vat.Code = "code";
+            validator.ShouldNotHaveValidationErrorFor(c => c.Preferences.Vat.Code, challenge);
         }
     }
 }

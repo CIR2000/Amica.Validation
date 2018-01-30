@@ -4,21 +4,21 @@ using FluentValidation;
 
 namespace Amica.Validation
 {
-    public class PaymentMethodValidator : AbstractValidator<PaymentMethod>
+    public class PaymentMethodValidator : AbstractValidator<Models.PaymentMethod>
     {
 		public PaymentMethodValidator()
         {
             RuleFor(method => method.Name).NotEmpty();
 
-            RuleFor(method => method.ModalitaPagamentoPA)
-				.Must(BeValidModalitaPagamentoPA).When(method => method.ModalitaPagamentoPA != null);
+            RuleFor(method => method.PublicAdministrationPaymentMethod)
+				.Must(BeValidModalitaPagamentoPA).When(method => method.PublicAdministrationPaymentMethod != null);
         }
 
-		private static bool BeValidModalitaPagamentoPA(ModalitaPagamentoPA challenge)
+		private static bool BeValidModalitaPagamentoPA(Models.ItalianPA.PaymentMethod challenge)
         {
             return (
-                challenge.Code != null && PAHelpers.ModalitaPagamentoPA.ContainsKey(challenge.Code) &&
-                challenge.Description != null && PAHelpers.ModalitaPagamentoPA[challenge.Code].Description == challenge.Description
+                challenge.Code != null && ItalianPAHelpers.PaymentMethod.ContainsKey(challenge.Code) &&
+                challenge.Description != null && ItalianPAHelpers.PaymentMethod[challenge.Code].Description == challenge.Description
                 );
         }
     }

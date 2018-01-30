@@ -7,7 +7,7 @@ using Amica.Models;
 namespace Validation.Tests
 {
     [TestFixture]
-    public class PaymentMethodValidation : BaseTestClass<PaymentMethod, PaymentMethodValidator>
+    public class PaymentMethodValidation : BaseTestClass<Amica.Models.PaymentMethod, PaymentMethodValidator>
     {
 		[Test]
 		public void NameIsRequired()
@@ -17,17 +17,17 @@ namespace Validation.Tests
 		[Test]
 		public void ModalitaPagamentoPAIsOptional()
         {
-            AssertOptional(o => o.ModalitaPagamentoPA);
+            AssertOptional(o => o.PublicAdministrationPaymentMethod);
         }
 
 		[Test]
 		public void ModalitaPagamentoPAMustBeValid()
         {
             validator.ShouldHaveValidationErrorFor(
-                o => o.ModalitaPagamentoPA, new ModalitaPagamentoPA { Code = "hello" });
+                o => o.PublicAdministrationPaymentMethod, new Amica.Models.ItalianPA.PaymentMethod { Code = "hello" });
 
-            foreach (var n in PAHelpers.ModalitaPagamentoPA)
-                validator.ShouldNotHaveValidationErrorFor(o => o.ModalitaPagamentoPA, n.Value);
+            foreach (var n in ItalianPAHelpers.PaymentMethod)
+                validator.ShouldNotHaveValidationErrorFor(o => o.PublicAdministrationPaymentMethod, n.Value);
         }
 
 

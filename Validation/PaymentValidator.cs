@@ -24,12 +24,12 @@ namespace Amica.Validation
         }
 		private static bool BeValidFirstPaymentOption(FirstPaymentOption challenge)
         {
-            return PaymentHelpers.FirstPaymentOptions.ContainsKey(challenge.Code);
+            return PaymentHelpers.FirstPaymentOptions.ContainsKey(challenge.Option);
         }
 
 		private static bool BeValidFirstPaymentDate(FirstPaymentDate challenge)
         {
-            return PaymentHelpers.FirstPaymentDates.ContainsKey(challenge.Code);
+            return PaymentHelpers.FirstPaymentDates.ContainsKey(challenge.Option);
         }
 
     }

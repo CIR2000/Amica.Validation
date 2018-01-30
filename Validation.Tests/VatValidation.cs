@@ -22,14 +22,14 @@ namespace Validation.Tests
 		[Test]
 		public void PublicAdministrationNatureMustBeValid()
         {
-            validator.ShouldHaveValidationErrorFor(c => c.NaturaPA, new NaturaPA ());
-            validator.ShouldHaveValidationErrorFor(c => c.NaturaPA, new NaturaPA { Code = "hello" });
-            validator.ShouldHaveValidationErrorFor(c => c.NaturaPA, new NaturaPA { Code = "MP01" });
-            validator.ShouldHaveValidationErrorFor(c => c.NaturaPA, new NaturaPA { Code = "MP01", Description = "fail" });
+            validator.ShouldHaveValidationErrorFor(c => c.VatExemption, new VatExemption ());
+            validator.ShouldHaveValidationErrorFor(c => c.VatExemption, new VatExemption { Code = "hello" });
+            validator.ShouldHaveValidationErrorFor(c => c.VatExemption, new VatExemption { Code = "MP01" });
+            validator.ShouldHaveValidationErrorFor(c => c.VatExemption, new VatExemption { Code = "MP01", Description = "fail" });
 
-            AssertOptional(c => c.NaturaPA);
-            foreach (var n in PAHelpers.NaturaPA)
-                validator.ShouldNotHaveValidationErrorFor(c => c.NaturaPA, n.Value);
+            AssertOptional(c => c.VatExemption);
+            foreach (var n in ItalianPAHelpers.VatExemption)
+                validator.ShouldNotHaveValidationErrorFor(c => c.VatExemption, n.Value);
         }
 
 

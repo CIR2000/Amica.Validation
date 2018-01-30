@@ -20,7 +20,7 @@ namespace Amica.Validation
             RuleFor(contact => contact.PublicAdministrationIndex).Length(6);
 
             // TODO WithMessage, localized
-            RuleFor(contact => contact.Is).Must(BeValidContactKind);
+            RuleFor(contact => contact.Relationship).Must(BeValidContactKind);
 
             RuleFor(contact => contact.Address).SetValidator(new AddressExValidator());
             RuleFor(contact => contact.Bank).SetValidator(new BankValidator());
@@ -29,14 +29,14 @@ namespace Amica.Validation
                 SetCollectionValidator(new ShippingAddressValidator());
         }
 
-		private static bool BeValidContactKind(ContactIs contactIs)
+		private static bool BeValidContactKind(Relationship relationship)
         {
             return !(
-                contactIs.Client == false && 
-				contactIs.Vendor == false &&
-				contactIs.Courier == false &&
-				contactIs.Agent == false &&
-				contactIs.AreaManager == false
+                relationship.IsClient == false && 
+				relationship.IsVendor == false &&
+				relationship.IsCourier == false &&
+				relationship.IsAgent== false &&
+				relationship.IsAreaManager == false
 				);
         }
 

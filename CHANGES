@@ -1,14 +1,19 @@
 Changelog
 =========
 
+v0.0.3
+======
+
+Released on January 9, 2018.
+
+- Acknolwedge the huge Amica.Models refactoring.
+
 v0.0.2
 ======
 
 Released on January 9, 2018.
 
 - Add CompanyValidator.
-
-Initial release.
 
 v0.0.1
 ======

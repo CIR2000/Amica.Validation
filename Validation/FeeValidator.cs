@@ -12,9 +12,9 @@ namespace Amica.Validation
             RuleFor(charge => charge.Vat).SetValidator(new VatValidator());
         }
 
-		private static bool BeValidModalitaPagamentoPA(ModalitaPagamentoPA challenge)
+		private static bool BeValidModalitaPagamentoPA(Models.ItalianPA.PaymentMethod challenge)
         {
-            return challenge.Code != null && PAHelpers.ModalitaPagamentoPA.ContainsKey(challenge.Code);
+            return challenge.Code != null && ItalianPAHelpers.PaymentMethod.ContainsKey(challenge.Code);
         }
     }
 }
