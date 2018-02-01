@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v0.0.4
+======
+
+- Validation for Company.FiscalProfile.VatIdentitificationNumber.
+- Validation for Company.FiscalProfile.TaxIdentitificationNumber.
+- Company.Preferences.Vat.Name and .Code not required anymore.
+
 v0.0.3
 ======
 

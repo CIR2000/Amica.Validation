@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FiscalProfileValidation.cs" />
     <Compile Include="DocumentItemValidation.cs" />
     <Compile Include="DocumentValidation.cs" />
     <Compile Include="TestHelpers.cs" />

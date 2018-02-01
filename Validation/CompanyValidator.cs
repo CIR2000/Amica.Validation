@@ -10,8 +10,7 @@ namespace Amica.Validation
             RuleFor(x => x.Name).NotEmpty();
             RuleFor(x => x.REACode).Length(9);
             RuleFor(x => x.SIACode).Length(5);
-            RuleFor(x => x.Preferences.Vat.Name).NotEmpty();
-            RuleFor(x => x.Preferences.Vat.Code).NotEmpty();
+            RuleFor(x => x.FiscalProfile).SetValidator(new FiscalProfileValidator());
         }
     }
 }

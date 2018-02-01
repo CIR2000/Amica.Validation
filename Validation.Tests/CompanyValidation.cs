@@ -24,18 +24,8 @@ namespace Validation.Tests
             AssertLength(c => c.SIACode, 5);
         }
 		[Test]
-		public void PredefinizioniVatNameIsRequired()
-        {
-            validator.ShouldHaveValidationErrorFor(c => c.Preferences.Vat.Name, challenge);
-            challenge.Preferences.Vat.Name = "name";
-            validator.ShouldNotHaveValidationErrorFor(c => c.Preferences.Vat.Name, challenge);
-        }
-		[Test]
-		public void PredefinizioniVatCodeIsRequired()
-        {
-            validator.ShouldHaveValidationErrorFor(c => c.Preferences.Vat.Code, challenge);
-            challenge.Preferences.Vat.Code = "code";
-            validator.ShouldNotHaveValidationErrorFor(c => c.Preferences.Vat.Code, challenge);
+		public void FiscalProfileHasChildValidator() {
+            validator.ShouldHaveChildValidator(c => c.FiscalProfile, typeof(FiscalProfileValidator));
         }
     }
 }
