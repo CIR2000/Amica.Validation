@@ -42,7 +42,7 @@ namespace Amica.Validation
 			vat = vat.Trim().ToUpper();
 
             // if country code is missing, assume Italian VAT
-            if (vat.StartsWith("IT") || vat.Length == 11)
+            if (vat.StartsWith("IT"))
                 return IsItalianVatNumber(vat);
 
 			// add more VAT checks for other countries here

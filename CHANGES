@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v0.0.5
+======
+
+Released on February 12, 2018.
+
+- Company.FiscalProfile.VatIdentitificationNumber must start with "IT".
+  Support for other countries' VAT codes can be plugged in as/when needed.
+
 v0.0.4
 ======
 

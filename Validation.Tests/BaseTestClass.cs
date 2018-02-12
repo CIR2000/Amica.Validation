@@ -115,14 +115,14 @@ namespace Validation.Tests
         {
             var prop = GetProperty(outExpr);
 
-            var invalid = new string[] {string.Empty, "A", "01180680399", "UK01180680397", "IT01180680399"};
+            var invalid = new string[] {string.Empty, "A", "01180680397", "92078790398", "02182030391", "01180680399", "UK01180680397", "IT01180680399"};
 			foreach(var idCode in invalid)
             {
                 prop.SetValue(challenge, idCode);
 				validator.ShouldHaveValidationErrorFor(outExpr, idCode);
             }
 
-            var valid = new string[] {null, "01180680397", "IT01180680397", "02182030391", "IT02182030391", "92078790398"};
+            var valid = new string[] {null, "IT01180680397", "IT02182030391"};
             foreach (var idCode in valid)
             {
                 prop.SetValue(challenge, idCode);
