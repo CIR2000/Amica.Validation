@@ -4,6 +4,8 @@ Changelog
 v0.0.4
 ======
 
+Released on February 6, 2018.
+
 - Validation for Company.FiscalProfile.VatIdentitificationNumber.
 - Validation for Company.FiscalProfile.TaxIdentitificationNumber.
 - Company.Preferences.Vat.Name and .Code not required anymore.
