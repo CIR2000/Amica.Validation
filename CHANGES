@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v0.0.6
+======
+
+Released on February 28, 2018.
+
+- Company.REACode and Company.SIACode now use a .When clause to excude null values.
+
 v0.0.5
 ======
 
