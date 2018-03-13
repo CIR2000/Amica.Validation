@@ -12,7 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CHANGES = CHANGES
 		LICENSE = LICENSE
 		README.md = README.md
-		Validation.nuspec = Validation.nuspec
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eve", "..\..\Eve.NET\Eve\Eve.csproj", "{76FF510C-9AF9-4BCB-B3F9-90181E0EBE8C}"
