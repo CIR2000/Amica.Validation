@@ -12,9 +12,11 @@ namespace Amica.Validation
 
             RuleFor(contact => contact.VatIdentificationNumber)
                 .Must(ValidatorHelpers.BeValidVatNumber)
+                .WithMessage(ErrorMessages.VatIdentificationNumber)
                 .When(contact => contact.VatIdentificationNumber != null);
 		    RuleFor(contact => contact.TaxIdentificationNumber)
                 .Must(ValidatorHelpers.BeValidTaxIdNumber)
+                .WithMessage(ErrorMessages.TaxIdentificationNumber)
                 .When(c => c.TaxIdentificationNumber != null);
 
             RuleFor(contact => contact.PublicAdministrationIndex).Length(6);

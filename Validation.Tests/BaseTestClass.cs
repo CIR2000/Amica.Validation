@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Linq;
 using System.Collections.Generic;
 using Amica.Models;
+using Amica.Validation;
 
 namespace Validation.Tests
 {
@@ -119,7 +120,7 @@ namespace Validation.Tests
 			foreach(var idCode in invalid)
             {
                 prop.SetValue(challenge, idCode);
-				validator.ShouldHaveValidationErrorFor(outExpr, idCode);
+				validator.ShouldHaveValidationErrorFor(outExpr, idCode).WithErrorMessage(ErrorMessages.VatIdentificationNumber);
             }
 
             var valid = new string[] {null, "IT01180680397", "IT02182030391"};
@@ -148,7 +149,7 @@ namespace Validation.Tests
             foreach (var idCode in invalid)
             {
                 prop.SetValue(challenge, idCode);
-                validator.ShouldHaveValidationErrorFor(outExpr, value:idCode);
+                validator.ShouldHaveValidationErrorFor(outExpr, value:idCode).WithErrorMessage(ErrorMessages.TaxIdentificationNumber);
             }
 
 

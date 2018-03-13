@@ -1,6 +1,16 @@
 Changelog
 =========
 
+v0.0.7
+======
+
+- FiscalProfile.TaxIdentificationNumber has custom error message.
+- FiscalProfile.VatIdentificationNumber has custom error message.
+- BillingAddress.TaxIdentificationNumber has custom error message.
+- BillingAddress.VatIdentificationNumber has custom error message.
+- Contact.TaxIdentificationNumber has custom error message.
+- Contact.VatIdentificationNumber has custom error message.
+
 v0.0.6
 ======
 
