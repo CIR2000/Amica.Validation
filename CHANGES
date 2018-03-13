@@ -4,6 +4,8 @@ Changelog
 v0.0.7
 ======
 
+Released on March 13, 2018.
+
 - FiscalProfile.TaxIdentificationNumber has custom error message.
 - FiscalProfile.VatIdentificationNumber has custom error message.
 - BillingAddress.TaxIdentificationNumber has custom error message.
