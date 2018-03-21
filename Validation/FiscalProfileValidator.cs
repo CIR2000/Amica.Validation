@@ -15,6 +15,8 @@ namespace Amica.Validation
                 .Must(ValidatorHelpers.BeValidTaxIdNumber)
                 .WithMessage(ErrorMessages.TaxIdentificationNumber)
                 .When(address=> address.TaxIdentificationNumber != null);
+            RuleFor(x => x.REACode).Length(9).When(x=>x.REACode != null);
+            RuleFor(x => x.SIACode).Length(5).When(x=>x.SIACode != null);
         }
     }
 }

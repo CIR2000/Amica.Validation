@@ -16,5 +16,15 @@ namespace Validation.Tests
         public void VatIdntificationNumberMustBeValid() {
             AssertValidVatIdentificationNumber(c => c.VatIdentificationNumber);
         }
+        [Test]
+        public void CodiceReaLength()
+        {
+            AssertLength(c => c.REACode, 9);
+        }
+        [Test]
+        public void CodiceSiaLength()
+        {
+            AssertLength(c => c.SIACode, 5);
+        }
     }
 }

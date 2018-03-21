@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v0.0.8
+======
+
+Released on March 21, 2018.
+
+- Company.REACode moved to FiscalProfile
+- Company.SIACode moved to FiscalProfile
+
 v0.0.7
 ======
 

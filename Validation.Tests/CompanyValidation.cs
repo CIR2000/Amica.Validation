@@ -13,16 +13,6 @@ namespace Validation.Tests
         {
             AssertRequired(c => c.Name);
         }
-        [Test]
-        public void CodiceReaLength()
-        {
-            AssertLength(c => c.REACode, 9);
-        }
-        [Test]
-        public void CodiceSiaLength()
-        {
-            AssertLength(c => c.SIACode, 5);
-        }
 		[Test]
 		public void FiscalProfileHasChildValidator() {
             validator.ShouldHaveChildValidator(c => c.FiscalProfile, typeof(FiscalProfileValidator));
