@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using Amica.Validation;
-using Amica.Models.ItalianPA;
 using FluentValidation.TestHelper;
 using Amica.Models;
 
@@ -15,19 +14,18 @@ namespace Validation.Tests
             AssertRequired(o => o.Name);
         }
 		[Test]
-		public void ModalitaPagamentoPAIsOptional()
+		public void PublicAdministrationCodeIsOptional()
         {
-            AssertOptional(o => o.PublicAdministrationPaymentMethod);
+            AssertOptional(o => o.PublicAdministrationCode);
         }
 
 		[Test]
-		public void ModalitaPagamentoPAMustBeValid()
+		public void PublicAdministrationCodeMustBeValid()
         {
-            validator.ShouldHaveValidationErrorFor(
-                o => o.PublicAdministrationPaymentMethod, new Amica.Models.ItalianPA.PaymentMethod { Code = "hello" });
+            validator.ShouldHaveValidationErrorFor( o => o.PublicAdministrationCode, "hello");
 
-            foreach (var n in ItalianPAHelpers.PaymentMethod)
-                validator.ShouldNotHaveValidationErrorFor(o => o.PublicAdministrationPaymentMethod, n.Value);
+            foreach (var n in PaymentHelpers.PaymentMethods)
+                validator.ShouldNotHaveValidationErrorFor(o => o.PublicAdministrationCode, n.PublicAdministrationCode);
         }
 
 

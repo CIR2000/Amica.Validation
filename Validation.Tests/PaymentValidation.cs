@@ -36,19 +36,19 @@ namespace Validation.Tests
                 validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentDate, d.Value);
         }
 		[Test]
-		public void FeeHasChildValidator()
-        {
-            validator.ShouldHaveChildValidator(p => p.Fee, typeof(FeeValidator));
-        }
-		[Test]
-		public void BankHasChildValidator()
-        {
-            validator.ShouldHaveChildValidator(p => p.Bank, typeof(BankValidator));
-        }
-		[Test]
 		public void PaymentMethodHasChildValidator()
         {
             validator.ShouldHaveChildValidator(p => p.PaymentMethod, typeof(PaymentMethodValidator));
+        }
+        [Test]
+        public void BankIdIsValidObjectId()
+        {
+            AssertIsValidObjectId<Payment>(x => x.BankId);
+        }
+        [Test]
+        public void FeeIdIsValidObjectId()
+        {
+            AssertIsValidObjectId<Payment>(x => x.FeeId);
         }
     }
 }

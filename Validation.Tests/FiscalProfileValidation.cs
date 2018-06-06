@@ -26,5 +26,10 @@ namespace Validation.Tests
         {
             AssertLength(c => c.SIACode, 5);
         }
+		[Test]
+		public void VatIdIsValidObjectId()
+        {
+            AssertIsValidObjectId<FiscalProfile>(x => x.VatId);
+        }
     }
 }

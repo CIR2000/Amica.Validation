@@ -53,11 +53,12 @@ namespace Validation.Tests
             validator.ShouldHaveChildValidator(c => c.Address, typeof(AddressExValidator));
         }
 
-		[Test]
-		public void BankHasChildValidator() {
+        [Test]
+        public void BankHasChildValidator()
+        {
             validator.ShouldHaveChildValidator(c => c.Bank, typeof(BankValidator));
         }
-		[Test]
+        [Test]
 		public void OtherAddressesHasChildValidator() {
             validator.ShouldHaveChildValidator(c => c.OtherAddresses, typeof(ShippingAddressValidator));
         }

@@ -1,6 +1,16 @@
 Changelog
 =========
 
+v0.0.9
+======
+
+Released on June 6, 2018.
+
+- FeeValidator now validates that VatId represents a valid objectid.
+- FiscalProfileValidator now validates that VatId represents a valid objectid.
+- PaymentValidator now validates that BankId represents a valid objectid.
+- PaymentValidator now validates that FeeId represents a valid objectid.
+
 v0.0.8
 ======
 

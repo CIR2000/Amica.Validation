@@ -1,5 +1,4 @@
 ﻿using Amica.Models;
-using Amica.Models.ItalianPA;
 using FluentValidation;
 
 namespace Amica.Validation
@@ -10,16 +9,19 @@ namespace Amica.Validation
         {
             RuleFor(method => method.Name).NotEmpty();
 
-            RuleFor(method => method.PublicAdministrationPaymentMethod)
-				.Must(BeValidModalitaPagamentoPA).When(method => method.PublicAdministrationPaymentMethod != null);
+            RuleFor(method => method.PublicAdministrationCode)
+				.Must(BeValidPaymentMethod).When(method => method.PublicAdministrationCode != null);
         }
 
-		private static bool BeValidModalitaPagamentoPA(Models.ItalianPA.PaymentMethod challenge)
+		private static bool BeValidPaymentMethod(string challenge)
         {
-            return (
-                challenge.Code != null && ItalianPAHelpers.PaymentMethod.ContainsKey(challenge.Code) &&
-                challenge.Description != null && ItalianPAHelpers.PaymentMethod[challenge.Code].Description == challenge.Description
-                );
+            if (challenge == string.Empty) return true;
+
+            foreach (var method in PaymentHelpers.PaymentMethods)
+            {
+                if (method.PublicAdministrationCode == challenge) return true;
+            }
+            return false;
         }
     }
 }

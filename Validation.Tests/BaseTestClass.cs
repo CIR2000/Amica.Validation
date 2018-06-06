@@ -177,6 +177,13 @@ namespace Validation.Tests
             Assert.AreEqual("notempty_error", r.Errors.FirstOrDefault(x => x.PropertyName == prop.Name).ErrorCode);
 
         }
+		public void AssertIsValidObjectId<T>(Expression<Func<TClass, string>> outExpr)
+        {
+            validator.ShouldHaveValidationErrorFor(outExpr, value: string.Empty);
+            validator.ShouldHaveValidationErrorFor(outExpr, value: "1234");
+            validator.ShouldNotHaveValidationErrorFor(outExpr, value: "53fbf4615c3b9f41c381b6a3");
+            validator.ShouldNotHaveValidationErrorFor(outExpr, value: null);
+        }
         private PropertyInfo GetProperty<T>(Expression<Func<TClass, T>> outExpr)
         {
             var expr = (MemberExpression)outExpr.Body;

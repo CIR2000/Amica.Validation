@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Amica.Validation
 {
-    public class BankValidator : AbstractValidator<Bank>
+    public class BankValidator : AbstractValidator<BankAsProperty>
     {
 		public BankValidator()
         {
