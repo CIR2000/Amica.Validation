@@ -4,6 +4,8 @@ namespace Amica.Validation
 {
     public static class ValidatorHelpers
     {
+        public static string ValidObjectId => "^[0-9a-fA-F]{24}$";
+
         public static bool BeValidTaxIdNumber(string taxIdCode)
         {
 			// we only support Italian fiscal codes for the time being.

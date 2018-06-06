@@ -6,7 +6,7 @@ using Amica.Models;
 namespace Validation.Tests
 {
     [TestFixture]
-    public class BankValidation : BaseTestClass<Bank, BankValidator>
+    public class BankValidation : BaseTestClass<BankAsProperty, BankValidator>
     {
 		[Test]
 		public void NameIsRequired()

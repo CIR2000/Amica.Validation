@@ -18,9 +18,9 @@ namespace Amica.Validation
 				.Must(BeValidFirstPaymentDate).When(payment => payment.FirstPaymentDate != null)
 				.NotNull();
 
-            RuleFor(payment => payment.Fee).SetValidator(new FeeValidator());
-            RuleFor(payment => payment.Bank).SetValidator(new BankValidator());
 			RuleFor(payment => payment.PaymentMethod).SetValidator(new PaymentMethodValidator());
+            RuleFor(payment => payment.BankId).Matches(ValidatorHelpers.ValidObjectId);
+            RuleFor(payment => payment.FeeId).Matches(ValidatorHelpers.ValidObjectId);
         }
 		private static bool BeValidFirstPaymentOption(FirstPaymentOption challenge)
         {

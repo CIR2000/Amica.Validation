@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using Amica.Validation;
-using FluentValidation.TestHelper;
 using Amica.Models;
 
 namespace Validation.Tests
@@ -14,9 +13,9 @@ namespace Validation.Tests
             AssertRequired(c => c.Name);
         }
 		[Test]
-		public void VatHasChildValidator()
+		public void VatIdIsValidObjectId()
         {
-            validator.ShouldHaveChildValidator(c => c.Vat, typeof(VatValidator));
+            AssertIsValidObjectId<Fee>(x => x.VatId);
         }
     }
 }
