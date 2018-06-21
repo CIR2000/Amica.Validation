@@ -1,24 +1,24 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using Amica.Models.Documents;
 using FluentValidation.TestHelper;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class DocumentFeeValidation : BaseTestClass<DocumentFee, DocumentFeeValidator>
     {
-		[Test]
+		[TestMethod]
 		public void VatHasChildValidator()
         {
             validator.ShouldHaveChildValidator(df => df.Vat, typeof(VatValidator));
         }
-		[Test]
+		[TestMethod]
 		public void NameIsRequired()
         {
             AssertRequired(df => df.Name);
         }
-		[Test]
+		[TestMethod]
 		public void AmountCannotBeZero()
         {
             challenge.Amount = 0;

@@ -1,13 +1,13 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using Amica.Models.Documents;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class DocumentItemLotValidation : BaseTestClass<DocumentItemLot, DocumentItemLotValidator>
     {
-		[Test]
+		[TestMethod]
 		public void NumberIsRequired()
         {
             AssertRequired(c => c.Number);

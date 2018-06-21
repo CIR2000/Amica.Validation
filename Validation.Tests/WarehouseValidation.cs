@@ -1,13 +1,13 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using Amica.Models;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class WarehouseValidation : BaseTestClass<Warehouse, WarehouseValidator>
     {
-		[Test]
+		[TestMethod]
 		public void NameIsRequired()
         {
             AssertRequired(c => c.Name);

@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FluentValidation;
 using System;
 using FluentValidation.TestHelper;
@@ -11,7 +11,7 @@ using Amica.Validation;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public abstract class BaseTestClass<TClass, TValidator> 
         where TClass : ObservableObject, new()
         where TValidator : IValidator<TClass>
@@ -19,7 +19,7 @@ namespace Validation.Tests
         protected TValidator validator;
         protected TClass challenge;
 
-        [SetUp]
+        [TestInitialize]
         public void Init()
         {
             validator = Activator.CreateInstance<TValidator>();

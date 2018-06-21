@@ -1,24 +1,24 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using FluentValidation.TestHelper;
 using Amica.Models;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class VatValidation : BaseTestClass<Vat, VatValidator>
     {
-		[Test]
+		[TestMethod]
 		public void CodeIsRequired()
         {
             AssertRequired(c => c.Code);
         }
-		[Test]
+		[TestMethod]
 		public void NameIsRequired()
         {
             AssertRequired(c => c.Name);
         }
-		[Test]
+		[TestMethod]
 		public void PublicAdministrationNatureMustBeValid()
         {
             validator.ShouldHaveValidationErrorFor(c => c.VatExemption, new VatExemption ());

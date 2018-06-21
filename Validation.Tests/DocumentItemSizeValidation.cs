@@ -1,18 +1,18 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using Amica.Models.Documents;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class DocumentItemSizeValidation : BaseTestClass<DocumentItemSize, DocumentItemSizeValidator>
     {
-		[Test]
+		[TestMethod]
 		public void NameIsRequired()
         {
             AssertRequired(c => c.Name);
         }
-		[Test]
+		[TestMethod]
 		public void NumberIsRequired()
         {
             AssertRequired(c => c.Number);

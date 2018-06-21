@@ -1,32 +1,32 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using Amica.Models.Company;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class FiscalProfileValidation : BaseTestClass<FiscalProfile, FiscalProfileValidator>
     {
-		[Test]
+		[TestMethod]
 		public void TaxIdentificationNumberMustBeValid() {
             AssertValidTaxIdentificationNumber(c => c.TaxIdentificationNumber);
         }
 
-        [Test]
+        [TestMethod]
         public void VatIdntificationNumberMustBeValid() {
             AssertValidVatIdentificationNumber(c => c.VatIdentificationNumber);
         }
-        [Test]
+        [TestMethod]
         public void CodiceReaLength()
         {
             AssertLength(c => c.REACode, 9);
         }
-        [Test]
+        [TestMethod]
         public void CodiceSiaLength()
         {
             AssertLength(c => c.SIACode, 5);
         }
-		[Test]
+		[TestMethod]
 		public void VatIdIsValidObjectId()
         {
             AssertIsValidObjectId<FiscalProfile>(x => x.VatId);

@@ -1,36 +1,36 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using FluentValidation.TestHelper;
 using Amica.Models.Documents;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class DocumentItemValidation : BaseTestClass<DocumentItem, DocumentItemValidator>
     {
-		[Test]
+		[TestMethod]
 		public void GuidIsRequired()
         {
 			AssertRequired(x => x.Guid); 
         }
-		[Test]
+		[TestMethod]
 		public void DetailHasChildValidator() {
             validator.ShouldHaveChildValidator(x => x.Detail, typeof(DocumentItemDetailValidator));
         }
 
-		[Test]
+		[TestMethod]
 		public void OrderHasChildValidator() {
             validator.ShouldHaveChildValidator(x => x.Order, typeof(OrderReferenceValidator));
         }
-		[Test]
+		[TestMethod]
 		public void VatHasChildValidator() {
             validator.ShouldHaveChildValidator(x => x.Vat, typeof(VatValidator));
         }
-		[Test]
+		[TestMethod]
 		public void WarehouseHasChildValidator() {
             validator.ShouldHaveChildValidator(x => x.Warehouse, typeof(WarehouseValidator));
         }
-		[Test]
+		[TestMethod]
 		public void VariationHasChildValidator() {
             validator.ShouldHaveChildValidator(x => x.VariationCollection, typeof(VariationValidator));
         }

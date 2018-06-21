@@ -1,19 +1,19 @@
-﻿using NUnit.Framework;
-using Amica.Validation;
+﻿using Amica.Validation;
 using FluentValidation.TestHelper;
 using Amica.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Validation.Tests
 {
     // Can't inherit from BastTestClass because BankValidator has an interface as generic argument.
 
-    [TestFixture]
+    [TestClass]
     public class BankValidation 
     {
         private BankValidator validator;
         protected Bank challenge;
 
-        [SetUp]
+        [TestInitialize]
         public void Init()
         {
             validator = new BankValidator();
@@ -21,7 +21,7 @@ namespace Validation.Tests
         }
 
 
-		[Test]
+		[TestMethod]
 		public void NameIsRequired()
         {
             challenge.Name = string.Empty;
@@ -31,7 +31,7 @@ namespace Validation.Tests
             challenge.Name = "a name";
             Assert.IsFalse(HasValidationError("Name"));
         }
-        [Test]
+        [TestMethod]
         public void IbanCodeMustBeValid()
         {
             challenge.IbanCode = string.Empty;
@@ -47,7 +47,7 @@ namespace Validation.Tests
             Assert.IsFalse(HasValidationError("IbanCode"));
         }
 
-        [Test]
+        [TestMethod]
         public void SwitCodeMustBeValid()
         {
 

@@ -1,25 +1,25 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using FluentValidation.TestHelper;
 using Amica.Models;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class PaymentMethodValidation : BaseTestClass<Amica.Models.PaymentMethod, PaymentMethodValidator>
     {
-		[Test]
+		[TestMethod]
 		public void NameIsRequired()
         {
             AssertRequired(o => o.Name);
         }
-		[Test]
+		[TestMethod]
 		public void PublicAdministrationCodeIsOptional()
         {
             AssertOptional(o => o.PublicAdministrationCode);
         }
 
-		[Test]
+		[TestMethod]
 		public void PublicAdministrationCodeMustBeValid()
         {
             validator.ShouldHaveValidationErrorFor( o => o.PublicAdministrationCode, "hello");

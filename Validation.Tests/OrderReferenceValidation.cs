@@ -1,19 +1,19 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using Amica.Models.Documents;
 using FluentValidation.TestHelper;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class OrderReferenceValidation : BaseTestClass<OrderReference, OrderReferenceValidator>
     {
-		[Test]
+		[TestMethod]
 		public void ItemIdIsRequired()
         {
             AssertRequired(x => x.ItemId);
         }
-		[Test]
+		[TestMethod]
 		public void NumberHasChildValidator()
         {
             validator.ShouldHaveChildValidator(x => x.Number, typeof(DocumentNumberValidator));

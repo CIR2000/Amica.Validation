@@ -1,23 +1,23 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using Amica.Models;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class ShippingAddressValidation : BaseTestClass<ShippingAddress, ShippingAddressValidator>
     {
-        [Test]
+        [TestMethod]
         public void NameIsRequired()
         {
             AssertRequired(c => c.Name);
         }
-		[Test]
+		[TestMethod]
 		public void MailMustBeValid()
         {
             AssertValidEmail(c => c.Mail);
         }
-		[Test]
+		[TestMethod]
 		public void PecMailMustBeValid()
         {
             AssertValidEmail(c => c.PecMail);

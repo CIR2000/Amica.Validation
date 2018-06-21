@@ -1,19 +1,19 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using Amica.Models.Documents;
 using FluentValidation.TestHelper;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class ShippingValidation : BaseTestClass<Shipping, ShippingValidator>
     {
-		[Test]
+		[TestMethod]
 		public void CourierHasChildValidator()
         {
             validator.ShouldHaveChildValidator(s => s.Courier, typeof(ContactDetailsExValidator));
         }
-        [Test]
+        [TestMethod]
         public void CourierIsRequiredWhenTransportModeIsSetToCourier()
         {
             challenge.TransportMode = DocumentHelpers.TransportModes[DocumentTransportMode.Courier];
@@ -21,7 +21,7 @@ namespace Validation.Tests
             challenge.TransportMode = DocumentHelpers.TransportModes[DocumentTransportMode.Sender];
             validator.ShouldNotHaveValidationErrorFor(s => s.Courier, challenge);
         }
-		[Test]
+		[TestMethod]
 		public void TermsHasChildValidator()
         {
             validator.ShouldHaveChildValidator(s => s.Terms, typeof(ShippingTermValidator));

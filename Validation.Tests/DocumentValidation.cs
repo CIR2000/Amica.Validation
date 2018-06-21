@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using Amica.Models.Documents;
 using FluentValidation.TestHelper;
@@ -7,20 +7,20 @@ using Amica.Validation.Tests;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class DocumentValidation : BaseTestClass<Document, DocumentValidator>
     {
-		[Test]
+		[TestMethod]
 		public void ReasonIsRequired()
         {
             AssertRequired(d => d.Reason);
         }
-		[Test]
+		[TestMethod]
 		public void NumberHasChildValidator()
         {
             validator.ShouldHaveChildValidator(d => d.Number, typeof(DocumentNumberValidator));
         }
-		[Test]
+		[TestMethod]
 		public void NumberIsRequired()
         {
             challenge.Number = null;
@@ -28,12 +28,12 @@ namespace Validation.Tests
             challenge.Number = new DocumentNumber();
             validator.ShouldNotHaveValidationErrorFor(d => d.Number, challenge);
         }
-		[Test]
+		[TestMethod]
 		public void StatusHasChildValidator()
         {
             validator.ShouldHaveChildValidator(d => d.Status, typeof(DocumentStatusValidator));
         }
-		[Test]
+		[TestMethod]
 		public void StatusIsRequired()
         {
             challenge.Status = null;
@@ -41,12 +41,12 @@ namespace Validation.Tests
             challenge.Status = new Status();  
             validator.ShouldNotHaveValidationErrorFor(d => d.Status, challenge);
         }
-		[Test]
+		[TestMethod]
 		public void CategoryHasChildValidator()
         {
             validator.ShouldHaveChildValidator(d => d.Category, typeof(DocumentCategoryValidator));
         }
-		[Test]
+		[TestMethod]
 		public void CategoryIsRequired()
         {
             challenge.Category = null;
@@ -54,12 +54,12 @@ namespace Validation.Tests
             challenge.Category = new Category();
             validator.ShouldNotHaveValidationErrorFor(d => d.Category, challenge);
         }
-		[Test]
+		[TestMethod]
 		public void PaymentHasChildValidator()
         {
             validator.ShouldHaveChildValidator(d => d.Payment, typeof(DocumentPaymentValidator));
         }
-		[Test]
+		[TestMethod]
 		public void PaymentIsRequired()
         {
             challenge.Payment = null;
@@ -67,12 +67,12 @@ namespace Validation.Tests
             challenge.Payment = new DocumentPayment();
             validator.ShouldNotHaveValidationErrorFor(d => d.Payment, challenge);
         }
-		[Test]
+		[TestMethod]
 		public void CurrencyHasChildValidator()
         {
             validator.ShouldHaveChildValidator(d => d.Currency, typeof(DocumentCurrencyValidator));
         }
-		[Test]
+		[TestMethod]
 		public void CurrencyIsRequired()
         {
             challenge.Currency = null;
@@ -80,12 +80,12 @@ namespace Validation.Tests
             challenge.Currency = new DocumentCurrency();
             validator.ShouldNotHaveValidationErrorFor(d => d.Currency, challenge);
         }
-		[Test]
+		[TestMethod]
 		public void BillToHasChildValidator()
         {
             validator.ShouldHaveChildValidator(d => d.BillTo, typeof(BillingAddressValidator));
         }
-		[Test]
+		[TestMethod]
 		public void BillToIsRequired()
         {
             challenge.BillTo = null;
@@ -93,17 +93,17 @@ namespace Validation.Tests
             challenge.BillTo = new BillingAddress();
             validator.ShouldNotHaveValidationErrorFor(d => d.BillTo, challenge);
         }
-		[Test]
+		[TestMethod]
 		public void ShipToHasChildValidator()
         {
             validator.ShouldHaveChildValidator(d => d.ShipTo, typeof(ShippingAddressValidator));
         }
-		[Test]
+		[TestMethod]
 		public void ShippingHasChildValidator()
         {
             validator.ShouldHaveChildValidator(d => d.Shipping, typeof(ShippingValidator));
         }
-		[Test]
+		[TestMethod]
 		public void ShippingTermsIsRequiredWhenCategoryIsDeliveryNoteOrShippingInvoice()
         {
             challenge.Shipping = new Shipping { Terms = null };
@@ -121,32 +121,32 @@ namespace Validation.Tests
             challenge.Shipping.Terms = DocumentHelpers.ShippingTerms[DocumentShippingTerm.DeliveredDutyPaid];
             validator.ShouldNotHaveNestedValidationErrorFor(d => d.Shipping.Terms, challenge);
         }
-		[Test]
+		[TestMethod]
 		public void AgentHasChildValidator()
         {
             validator.ShouldHaveChildValidator(d => d.Agent, typeof(ContactDetailsExValidator));
         }
-		[Test]
+		[TestMethod]
 		public void BankHasChildValidator()
         {
             validator.ShouldHaveChildValidator(d => d.Bank, typeof(BankValidator));
         }
-		[Test]
+		[TestMethod]
 		public void SocialSecurityCollectionHasChildValidator()
         {
             validator.ShouldHaveChildValidator(d => d.SocialSecurityCollection, typeof(SocialSecurityValidator));
         }
-		[Test]
+		[TestMethod]
 		public void VariationCollectionHasChildValidator()
         {
             validator.ShouldHaveChildValidator(d => d.VariationCollection, typeof(VariationValidator));
         }
-		[Test]
+		[TestMethod]
 		public void FeeCollectionHasChildValidator()
         {
             validator.ShouldHaveChildValidator(d => d.FeeCollection, typeof(DocumentFeeValidator));
         }
-		[Test]
+		[TestMethod]
 		public void ItemCollectionHasChildValidator()
         {
             validator.ShouldHaveChildValidator(d => d.ItemCollection, typeof(DocumentItemValidator));

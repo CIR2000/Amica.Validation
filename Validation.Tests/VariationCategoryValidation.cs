@@ -1,13 +1,13 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using Amica.Models.Documents;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class VariationCategoryValidation : BaseTestClass<VariationCategory, VariationCategoryValidator>
     {
-		[Test]
+		[TestMethod]
 		public void DescriptionIsRequired()
         {
             AssertRequired(s => s.Description);

@@ -1,30 +1,30 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using FluentValidation.TestHelper;
 using Amica.Models;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class ContactValidation : BaseTestClass<Contact, ContactValidator>
     {
-		[Test]
+		[TestMethod]
 		public void NameIsRequired()
         {
 			AssertRequired(c => c.Name); 
         }
-		[Test]
+		[TestMethod]
 		public void TaxIdentificationNumberMustBeValid()
         {
             AssertValidTaxIdentificationNumber(c => c.TaxIdentificationNumber);
         }
-        [Test]
+        [TestMethod]
         public void VatIdentificationNumberMustBeValid()
         {
             AssertValidVatIdentificationNumber(c => c.VatIdentificationNumber);
         }
 
-		[Test]
+		[TestMethod]
 		public void PublicAdministrationIndexLength()
         {
             const int length = 6;
@@ -37,7 +37,7 @@ namespace Validation.Tests
             validator.ShouldNotHaveValidationErrorFor(c => c.PublicAdministrationIndex, new string('A', length));
         }
 
-        [Test]
+        [TestMethod]
         public void ContactIsMustBeValid() {
             validator.ShouldHaveValidationErrorFor(c => c.Relationship, new Relationship());
 
@@ -48,17 +48,17 @@ namespace Validation.Tests
             validator.ShouldNotHaveValidationErrorFor(c => c.Relationship, new Relationship { IsAreaManager = true });
         }
 
-		[Test]
+		[TestMethod]
 		public void AddressHasChildValidator() {
             validator.ShouldHaveChildValidator(c => c.Address, typeof(AddressExValidator));
         }
 
-        [Test]
+        [TestMethod]
         public void BankHasChildValidator()
         {
             validator.ShouldHaveChildValidator(c => c.Bank, typeof(BankValidator));
         }
-        [Test]
+        [TestMethod]
 		public void OtherAddressesHasChildValidator() {
             validator.ShouldHaveChildValidator(c => c.OtherAddresses, typeof(ShippingAddressValidator));
         }

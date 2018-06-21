@@ -1,23 +1,23 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using Amica.Models;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class CurrencyValidation : BaseTestClass<Currency, CurrencyValidator>
     {
-		[Test]
+		[TestMethod]
 		public void NameIsRequired()
         {
             AssertRequired(c => c.Name);
         }
-		[Test]
+		[TestMethod]
 		public void CodeIsRequired()
         {
             AssertRequired(c => c.Code);
         }
-		[Test]
+		[TestMethod]
 		public void SymbolIsRequired()
         {
             AssertRequired(c => c.Symbol);

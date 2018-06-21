@@ -1,14 +1,14 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using FluentValidation.TestHelper;
 using Amica.Models.Documents;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class DocumentPaymentValidation : BaseTestClass<DocumentPayment, DocumentPaymentValidator>
     {
-		[Test]
+		[TestMethod]
 		public void CurrentHasChildValidator()
         {
             validator.ShouldHaveChildValidator(dp => dp.Current, typeof(PaymentValidator));

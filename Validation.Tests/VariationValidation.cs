@@ -1,14 +1,14 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Amica.Validation;
 using Amica.Models.Documents;
 using FluentValidation.TestHelper;
 
 namespace Validation.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class VariationValidation : BaseTestClass<Variation, VariationValidator>
     {
-		[Test]
+		[TestMethod]
 		public void CategoryHasChildValidator()
         {
             validator.ShouldHaveChildValidator(s => s.Category, typeof(VariationCategoryValidator));
