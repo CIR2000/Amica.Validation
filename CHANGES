@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v0.0.10
+======
+
+Released on June 21, 2018.
+
+- BankValidator now takes an IBank which allows for validating both Bank and BankAsProperty instances.
+
 v0.0.9
 ======
 

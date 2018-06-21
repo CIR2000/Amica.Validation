@@ -5,36 +5,81 @@ using Amica.Models;
 
 namespace Validation.Tests
 {
+    // Can't inherit from BastTestClass because BankValidator has an interface as generic argument.
+
     [TestFixture]
-    public class BankValidation : BaseTestClass<BankAsProperty, BankValidator>
+    public class BankValidation 
     {
+        private BankValidator validator;
+        protected Bank challenge;
+
+        [SetUp]
+        public void Init()
+        {
+            validator = new BankValidator();
+            challenge = new Bank();
+        }
+
+
 		[Test]
 		public void NameIsRequired()
-        { 
-            AssertRequired(b=>b.Name);
-        }
-		[Test]
-		public void IbanCodeMustBeValid()
         {
-            validator.ShouldHaveValidationErrorFor(c => c.IbanCode, string.Empty);
-            validator.ShouldHaveValidationErrorFor(c => c.IbanCode, "ABC");
-            validator.ShouldHaveValidationErrorFor(c => c.IbanCode, "88T1927501600CC0010110180");
+            challenge.Name = string.Empty;
+            Assert.IsTrue(HasValidationError("Name"));
+            challenge.Name = null;
+            Assert.IsTrue(HasValidationError("Name"));
+            challenge.Name = "a name";
+            Assert.IsFalse(HasValidationError("Name"));
+        }
+        [Test]
+        public void IbanCodeMustBeValid()
+        {
+            challenge.IbanCode = string.Empty;
+            Assert.IsTrue(HasValidationError("IbanCode"));
+            challenge.IbanCode = "ABC";
+            Assert.IsTrue(HasValidationError("IbanCode"));
+            challenge.IbanCode = "88T1927501600CC0010110180";
+            Assert.IsTrue(HasValidationError("IbanCode"));
 
-            validator.ShouldNotHaveValidationErrorFor(c => c.IbanCode, "IT88T1927501600CC0010110180");
-            validator.ShouldNotHaveValidationErrorFor(c => c.IbanCode, value:null);
+            challenge.IbanCode = "IT88T1927501600CC0010110180";
+            Assert.IsFalse(HasValidationError("IbanCode"));
+            challenge.IbanCode = null;
+            Assert.IsFalse(HasValidationError("IbanCode"));
         }
 
-		[Test]
-		public void SwitCodeMustBeValid() {
+        [Test]
+        public void SwitCodeMustBeValid()
+        {
 
-            validator.ShouldHaveValidationErrorFor(c => c.BicSwiftCode, string.Empty);
-            validator.ShouldHaveValidationErrorFor(c => c.BicSwiftCode, "A");
-            validator.ShouldHaveValidationErrorFor(c => c.BicSwiftCode, "12345678901");
+            challenge.BicSwiftCode = string.Empty;
+            Assert.IsTrue(HasValidationError("BicSwiftCode"));
+            challenge.BicSwiftCode = "A";
+            Assert.IsTrue(HasValidationError("BicSwiftCode"));
+            challenge.BicSwiftCode = "12345678901";
+            Assert.IsTrue(HasValidationError("BicSwiftCode"));
 
-            validator.ShouldNotHaveValidationErrorFor(c => c.BicSwiftCode, value:null); 
-            validator.ShouldNotHaveValidationErrorFor(c => c.BicSwiftCode, "ABCOITMM"); 
-            validator.ShouldNotHaveValidationErrorFor(c => c.BicSwiftCode, "ICRAITRRL90"); 
-            validator.ShouldNotHaveValidationErrorFor(c => c.BicSwiftCode, "CRGEITGG183"); 
+            challenge.BicSwiftCode = null;
+            Assert.IsFalse(HasValidationError("BicSwiftCode"));
+            challenge.BicSwiftCode = "ABCOITMM";
+            Assert.IsFalse(HasValidationError("BicSwiftCode"));
+            challenge.BicSwiftCode = "ICRAITRRL90";
+            Assert.IsFalse(HasValidationError("BicSwiftCode"));
+            challenge.BicSwiftCode = "CRGEITGG183";
+            Assert.IsFalse(HasValidationError("BicSwiftCode"));
+        }
+        private bool HasValidationError(string propertyName)
+        {
+            var r = validator.Validate(challenge);
+            var found = false;
+            foreach (var item in r.Errors)
+            {
+                if (item.PropertyName == propertyName)
+                {
+                    found = true;
+                    break;
+                }
+            }
+            return found;
         }
 
     }
