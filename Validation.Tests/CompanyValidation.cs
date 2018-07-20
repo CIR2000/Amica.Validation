@@ -2,7 +2,6 @@
 using Amica.Validation;
 using Amica.Models.Company;
 using FluentValidation.TestHelper;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Validation.Tests
 {

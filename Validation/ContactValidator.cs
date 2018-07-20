@@ -25,7 +25,6 @@ namespace Amica.Validation
             RuleFor(contact => contact.Relationship).Must(BeValidContactKind);
 
             RuleFor(contact => contact.Address).SetValidator(new AddressExValidator());
-            RuleFor(contact => contact.Bank).SetValidator(new BankValidator());
 
             RuleFor(contact => contact.OtherAddresses).
                 SetCollectionValidator(new ShippingAddressValidator());

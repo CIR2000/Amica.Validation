@@ -54,11 +54,6 @@ namespace Validation.Tests
         }
 
         [TestMethod]
-        public void BankHasChildValidator()
-        {
-            validator.ShouldHaveChildValidator(c => c.Bank, typeof(BankValidator));
-        }
-        [TestMethod]
 		public void OtherAddressesHasChildValidator() {
             validator.ShouldHaveChildValidator(c => c.OtherAddresses, typeof(ShippingAddressValidator));
         }

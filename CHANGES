@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.0.11
+======
+
+- Remove child BankValidator from ContactValidator. Addresses adam/#7.
+
 v0.0.10
 ======
 
