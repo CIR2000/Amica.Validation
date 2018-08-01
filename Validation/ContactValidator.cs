@@ -6,7 +6,7 @@ namespace Amica.Validation
 {
     public class ContactValidator : AbstractValidator<Contact>
     {
-		public ContactValidator()
+        public ContactValidator()
         {
             RuleFor(contact => contact.Name).NotEmpty();
 
@@ -14,15 +14,15 @@ namespace Amica.Validation
                 .Must(ValidatorHelpers.BeValidVatNumber)
                 .WithMessage(ErrorMessages.VatIdentificationNumber)
                 .When(contact => contact.VatIdentificationNumber != null);
-		    RuleFor(contact => contact.TaxIdentificationNumber)
+            RuleFor(contact => contact.TaxIdentificationNumber)
                 .Must(ValidatorHelpers.BeValidTaxIdNumber)
                 .WithMessage(ErrorMessages.TaxIdentificationNumber)
                 .When(c => c.TaxIdentificationNumber != null);
 
-            RuleFor(contact => contact.PublicAdministrationIndex).Length(6);
+            RuleFor(contact => contact.PublicAdministrationCode).Length(6);
 
             // TODO WithMessage, localized
-            RuleFor(contact => contact.Relationship).Must(BeValidContactKind);
+            RuleFor(contact => contact.Relationship).Must(BeValidRelationship);
 
             RuleFor(contact => contact.Address).SetValidator(new AddressExValidator());
 
@@ -30,15 +30,17 @@ namespace Amica.Validation
                 SetCollectionValidator(new ShippingAddressValidator());
         }
 
-		private static bool BeValidContactKind(Relationship relationship)
+        private static bool BeValidRelationship(Relationship relationship)
         {
             return !(
-                relationship.IsClient == false && 
-				relationship.IsVendor == false &&
-				relationship.IsCourier == false &&
-				relationship.IsAgent== false &&
-				relationship.IsAreaManager == false
-				);
+                relationship.IsActive == false &&
+                relationship.IsAgent == false &&
+                relationship.IsAreaManager == false &&
+                relationship.IsClient == false &&
+                relationship.IsCompany == false &&
+                relationship.IsCourier == false &&
+                relationship.IsVendor == false
+                );
         }
 
     }
