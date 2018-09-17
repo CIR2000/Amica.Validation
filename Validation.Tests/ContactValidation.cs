@@ -40,7 +40,6 @@ namespace Validation.Tests
         [TestMethod]
         public void ContactIsMustBeValid()
         {
-            validator.ShouldHaveValidationErrorFor(c => c.Relationship, new Relationship() { IsActive = false, IsCompany = false });
             validator.ShouldNotHaveValidationErrorFor(c => c.Relationship, new Relationship { IsActive = true });
             validator.ShouldNotHaveValidationErrorFor(c => c.Relationship, new Relationship { IsAgent = true });
             validator.ShouldNotHaveValidationErrorFor(c => c.Relationship, new Relationship { IsAreaManager = true });
@@ -48,6 +47,7 @@ namespace Validation.Tests
             validator.ShouldNotHaveValidationErrorFor(c => c.Relationship, new Relationship { IsCompany = true });
             validator.ShouldNotHaveValidationErrorFor(c => c.Relationship, new Relationship { IsCourier = true });
             validator.ShouldNotHaveValidationErrorFor(c => c.Relationship, new Relationship { IsVendor = true });
+            validator.ShouldHaveValidationErrorFor(c => c.Relationship, new Relationship() { IsActive = false, IsClient = false, IsCompany = false });
         }
 
         [TestMethod]

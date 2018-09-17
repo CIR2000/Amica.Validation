@@ -1,6 +1,16 @@
 Changelog
 =========
 
+v 0.0.13
+========
+
+Released on September 17, 2018.
+
+- Add MailTemplate validator.
+- Add MailSettings validator.
+- Acknowledge property name change: Contact.PublicAdministrationCode.
+- Ackinoledge that Contact.Relationship defaults to .IsClient = true.
+
 v0.0.12
 =======
 
@@ -9,7 +19,7 @@ Released on August 1, 2018.
 - Fix crash on validating Contact.PublicAdministrationIndex. Closes #2.
 
 v0.0.11
-======
+=======
 
 - Remove child BankValidator from ContactValidator. Addresses adam/#7.
 
