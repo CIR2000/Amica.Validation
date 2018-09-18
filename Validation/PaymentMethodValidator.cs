@@ -9,8 +9,8 @@ namespace Amica.Validation
         {
             RuleFor(method => method.Name).NotEmpty();
 
-            RuleFor(method => method.PublicAdministrationCode)
-				.Must(BeValidPaymentMethod).When(method => method.PublicAdministrationCode != null);
+            RuleFor(method => method.Code)
+				.Must(BeValidPaymentMethod).When(method => method.Code != null);
         }
 
 		private static bool BeValidPaymentMethod(string challenge)
@@ -19,7 +19,7 @@ namespace Amica.Validation
 
             foreach (var method in PaymentHelpers.PaymentMethods)
             {
-                if (method.PublicAdministrationCode == challenge) return true;
+                if (method.Code == challenge) return true;
             }
             return false;
         }

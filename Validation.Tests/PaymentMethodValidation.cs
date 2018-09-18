@@ -14,18 +14,18 @@ namespace Validation.Tests
             AssertRequired(o => o.Name);
         }
 		[TestMethod]
-		public void PublicAdministrationCodeIsOptional()
+		public void CodeIsOptional()
         {
-            AssertOptional(o => o.PublicAdministrationCode);
+            AssertOptional(o => o.Code);
         }
 
 		[TestMethod]
-		public void PublicAdministrationCodeMustBeValid()
+		public void CodeMustBeValid()
         {
-            validator.ShouldHaveValidationErrorFor( o => o.PublicAdministrationCode, "hello");
+            validator.ShouldHaveValidationErrorFor( o => o.Code, "hello");
 
             foreach (var n in PaymentHelpers.PaymentMethods)
-                validator.ShouldNotHaveValidationErrorFor(o => o.PublicAdministrationCode, n.PublicAdministrationCode);
+                validator.ShouldNotHaveValidationErrorFor(o => o.Code, n.Code);
         }
 
 

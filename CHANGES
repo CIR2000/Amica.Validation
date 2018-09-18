@@ -1,8 +1,17 @@
 Changelog
 =========
 
-v 0.0.13
-========
+v0.0.14
+=======
+
+Released on September 18, 2018.
+
+- Contact.EinvoiceId validation rule changed to min 6, max 7.
+- Acknowledge property name change: Contact.eInvoiceId instead of PublicAdministrationCode.
+- Acknowledge property name change: PaymentMethod.Code instead of PublicAdministrationCode.
+
+v0.0.13
+=======
 
 Released on September 17, 2018.
 

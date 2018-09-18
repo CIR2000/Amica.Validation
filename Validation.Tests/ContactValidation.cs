@@ -25,16 +25,9 @@ namespace Validation.Tests
         }
 
         [TestMethod]
-        public void PublicAdministrationIndexLength()
+        public void EinvoiceIdLength()
         {
-            const int length = 6;
-            validator.ShouldHaveValidationErrorFor(c => c.PublicAdministrationCode, string.Empty);
-            validator.ShouldHaveValidationErrorFor(c => c.PublicAdministrationCode, "A");
-            validator.ShouldHaveValidationErrorFor(c => c.PublicAdministrationCode, new string('A', length + 1));
-            validator.ShouldHaveValidationErrorFor(c => c.PublicAdministrationCode, new string('A', length - 1));
-
-            validator.ShouldNotHaveValidationErrorFor(c => c.PublicAdministrationCode, value: null);
-            validator.ShouldNotHaveValidationErrorFor(c => c.PublicAdministrationCode, new string('A', length));
+            AssertMinMaxLength(c => c.EinvoiceId, 6, 7);
         }
 
         [TestMethod]

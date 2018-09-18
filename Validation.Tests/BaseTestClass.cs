@@ -69,12 +69,14 @@ namespace Validation.Tests
                 validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorCode(expectedErrorCode);
             }
         }
-        protected void AssertMinMaxLength(Expression<Func<TClass, string>> outExpr, int min, int max, char filler='x', string expectedErrorCode="length_error")
+        protected void AssertMinMaxLength(Expression<Func<TClass, string>> outExpr, int min, int max, char filler='x')
         {
             var prop = GetProperty(outExpr);
 
             prop.SetValue(challenge, new string(filler, max+1));
-            validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorCode(expectedErrorCode);
+            validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorCode("MaximumLengthValidator");
+            prop.SetValue(challenge, new string(filler, min-1));
+            validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorCode("MinimumLengthValidator");
             prop.SetValue(challenge, new string(filler, min));
             validator.ShouldNotHaveValidationErrorFor(outExpr, challenge);
             prop.SetValue(challenge, new string(filler, max));

@@ -19,7 +19,7 @@ namespace Amica.Validation
                 .WithMessage(ErrorMessages.TaxIdentificationNumber)
                 .When(c => c.TaxIdentificationNumber != null);
 
-            RuleFor(contact => contact.PublicAdministrationCode).Length(6);
+            RuleFor(contact => contact.EinvoiceId).MinimumLength(6).MaximumLength(7).When(contact => contact.EinvoiceId!=null);
 
             // TODO WithMessage, localized
             RuleFor(contact => contact.Relationship).Must(BeValidRelationship);
