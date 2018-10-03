@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentValidation;
 using FluentValidation.Results;
+using FluentValidation.Validators;
 
 namespace Amica.Validation
 {
@@ -22,9 +23,9 @@ public class CompositeValidatorRule : IValidationRule
         get; set;
     }
 
-    public IEnumerable<FluentValidation.Results.ValidationFailure> Validate(ValidationContext context)
+    public IEnumerable<ValidationFailure> Validate(ValidationContext context)
     {
-        var ret = new List<FluentValidation.Results.ValidationFailure>();
+        var ret = new List<ValidationFailure>();
 
         foreach(var v in _validators)
         {
@@ -49,11 +50,23 @@ public class CompositeValidatorRule : IValidationRule
             throw new NotImplementedException();
         }
 
+        public void ApplyCondition(Func<PropertyValidatorContext, bool> predicate, ApplyConditionTo applyConditionTo = ApplyConditionTo.AllValidators)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ApplyAsyncCondition(Func<PropertyValidatorContext, CancellationToken, Task<bool>> predicate, ApplyConditionTo applyConditionTo = ApplyConditionTo.AllValidators)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<FluentValidation.Validators.IPropertyValidator> Validators
     {
         get { yield break; }
     }
-    #endregion
-}
+
+        public string[] RuleSets { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        #endregion
+    }
 
 }
