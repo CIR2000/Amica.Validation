@@ -7,6 +7,7 @@ namespace Amica.Validation
     {
 		public MailTemplateValidator()
         {
+            RuleFor(x => x.Name).NotEmpty();
             RuleFor(x => x.FromAddress).EmailAddress();
         }
     }
