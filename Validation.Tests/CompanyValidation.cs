@@ -17,5 +17,9 @@ namespace Validation.Tests
 		public void FiscalProfileHasChildValidator() {
             validator.ShouldHaveChildValidator(c => c.FiscalProfile, typeof(FiscalProfileValidator));
         }
+		[TestMethod]
+		public void AddressHasChildValidator() {
+            validator.ShouldHaveChildValidator(c => c.Address, typeof(AddressExValidator));
+        }
     }
 }

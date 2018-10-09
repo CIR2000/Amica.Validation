@@ -9,6 +9,7 @@ namespace Amica.Validation
         {
             RuleFor(x => x.Name).NotEmpty();
             RuleFor(x => x.FiscalProfile).SetValidator(new FiscalProfileValidator());
+            RuleFor(x => x.Address).SetValidator(new AddressExValidator());
         }
     }
 }
