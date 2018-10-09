@@ -4,6 +4,8 @@ Changelog
 v0.0.17
 =======
 
+Released on October 9, 2018.
+
 - Company.Address now has a AddressEx child validator. Closes CIR2000/Amica.WebApp#26.
 - All mail fields have regex validation and localized error message. Closes CIR2000/Amica.WebApp#25.
 
