@@ -9,11 +9,11 @@ namespace Amica.Validation
         {
             RuleFor(address => address.VatIdentificationNumber)
                 .Must(ValidatorHelpers.BeValidVatNumber)
-                .WithMessage(ErrorMessages.VatIdentificationNumber)
+                .WithMessage(ErrorMessages.VatIdentificationNumberError)
                 .When(address => address.VatIdentificationNumber != null);
             RuleFor(address => address.TaxIdentificationNumber)
                 .Must(ValidatorHelpers.BeValidTaxIdNumber)
-                .WithMessage(ErrorMessages.TaxIdentificationNumber)
+                .WithMessage(ErrorMessages.TaxIdentificationNumberError)
                 .When(address=> address.TaxIdentificationNumber != null);
             RuleFor(x => x.REACode).Length(9).When(x=>x.REACode != null);
             RuleFor(x => x.SIACode).Length(5).When(x=>x.SIACode != null);

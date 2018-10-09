@@ -8,8 +8,12 @@ namespace Amica.Validation
 		public ShippingAddressValidator() 
         {
             RuleFor(address => address.Name).NotEmpty();
-            RuleFor(address => address.Mail).EmailAddress();
-            RuleFor(address => address.PecMail).EmailAddress();
+            RuleFor(address => address.Mail)
+                .Matches(Static.MailRegex)
+                .WithLocalizedMessage(typeof(ErrorMessages), nameof(ErrorMessages.MailAddressError));
+            RuleFor(address => address.PecMail)
+                .Matches(Static.MailRegex)
+                .WithLocalizedMessage(typeof(ErrorMessages), nameof(ErrorMessages.MailAddressError));
         }
     }
 }

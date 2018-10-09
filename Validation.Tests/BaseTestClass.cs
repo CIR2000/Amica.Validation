@@ -97,15 +97,15 @@ namespace Validation.Tests
         {
             var prop = GetProperty(outExpr);
             prop.SetValue(challenge, string.Empty);
-			validator.ShouldHaveValidationErrorFor(outExpr, challenge);
+			validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorMessage(ErrorMessages.MailAddressError);
             prop.SetValue(challenge, "fakeemail");
-            validator.ShouldHaveValidationErrorFor(outExpr, challenge);
+            validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorMessage(ErrorMessages.MailAddressError);
             prop.SetValue(challenge, "mail@mail");
-            validator.ShouldHaveValidationErrorFor(outExpr, challenge);
+            validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorMessage(ErrorMessages.MailAddressError);
             prop.SetValue(challenge, "@mail.it");
-            validator.ShouldHaveValidationErrorFor(outExpr, challenge);
+            validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorMessage(ErrorMessages.MailAddressError);
             prop.SetValue(challenge, @"test\@test@iana.org");
-            validator.ShouldHaveValidationErrorFor(outExpr, challenge);
+            validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorMessage(ErrorMessages.MailAddressError);
             prop.SetValue(challenge,  "mail@mail.it.com");
 			validator.ShouldNotHaveValidationErrorFor(outExpr, challenge); 
 
@@ -122,7 +122,7 @@ namespace Validation.Tests
 			foreach(var idCode in invalid)
             {
                 prop.SetValue(challenge, idCode);
-				validator.ShouldHaveValidationErrorFor(outExpr, idCode).WithErrorMessage(ErrorMessages.VatIdentificationNumber);
+				validator.ShouldHaveValidationErrorFor(outExpr, idCode).WithErrorMessage(ErrorMessages.VatIdentificationNumberError);
             }
 
             var valid = new string[] {null, "IT01180680397", "IT02182030391"};
@@ -151,7 +151,7 @@ namespace Validation.Tests
             foreach (var idCode in invalid)
             {
                 prop.SetValue(challenge, idCode);
-                validator.ShouldHaveValidationErrorFor(outExpr, value:idCode).WithErrorMessage(ErrorMessages.TaxIdentificationNumber);
+                validator.ShouldHaveValidationErrorFor(outExpr, value:idCode).WithErrorMessage(ErrorMessages.TaxIdentificationNumberError);
             }
 
 

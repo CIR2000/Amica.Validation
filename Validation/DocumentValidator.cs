@@ -33,10 +33,10 @@ namespace Amica.Validation
                 .NotNull()
                 .When(d => d.Category?.Code == DocumentCategory.ShippingInvoice || d.Category?.Code == DocumentCategory.DeliveryNote);
             RuleFor(d => d.Bank).SetValidator(new BankValidator());
-            RuleFor(d => d.SocialSecurityCollection).SetCollectionValidator(new SocialSecurityValidator());
-            RuleFor(d => d.VariationCollection).SetCollectionValidator(new VariationValidator());
-            RuleFor(d => d.FeeCollection).SetCollectionValidator(new DocumentFeeValidator());
-            RuleFor(d => d.ItemCollection).SetCollectionValidator(new DocumentItemValidator());
+            RuleForEach(d => d.SocialSecurityCollection).SetValidator(new SocialSecurityValidator());
+            RuleForEach(d => d.VariationCollection).SetValidator(new VariationValidator());
+            RuleForEach(d => d.FeeCollection).SetValidator(new DocumentFeeValidator());
+            RuleForEach(d => d.ItemCollection).SetValidator(new DocumentItemValidator());
         }
     }
 }

@@ -12,11 +12,11 @@ namespace Amica.Validation
 
             RuleFor(contact => contact.VatIdentificationNumber)
                 .Must(ValidatorHelpers.BeValidVatNumber)
-                .WithMessage(ErrorMessages.VatIdentificationNumber)
+                .WithMessage(ErrorMessages.VatIdentificationNumberError)
                 .When(contact => contact.VatIdentificationNumber != null);
             RuleFor(contact => contact.TaxIdentificationNumber)
                 .Must(ValidatorHelpers.BeValidTaxIdNumber)
-                .WithMessage(ErrorMessages.TaxIdentificationNumber)
+                .WithMessage(ErrorMessages.TaxIdentificationNumberError)
                 .When(c => c.TaxIdentificationNumber != null);
 
             RuleFor(contact => contact.EinvoiceId).MinimumLength(6).MaximumLength(7).When(contact => contact.EinvoiceId!=null);
@@ -26,8 +26,8 @@ namespace Amica.Validation
 
             RuleFor(contact => contact.Address).SetValidator(new AddressExValidator());
 
-            RuleFor(contact => contact.OtherAddresses).
-                SetCollectionValidator(new ShippingAddressValidator());
+            RuleForEach(contact => contact.OtherAddresses).
+                SetValidator(new ShippingAddressValidator());
         }
 
         private static bool BeValidRelationship(Relationship relationship)

@@ -62,9 +62,18 @@ namespace Amica.Validation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Indirizzo mail non corretto..
+        /// </summary>
+        public static string MailAddressError {
+            get {
+                return ResourceManager.GetString("MailAddressError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Codice fiscale errato..
         /// </summary>
-        public static string TaxIdentificationNumber {
+        public static string TaxIdentificationNumberError {
             get {
                 return ResourceManager.GetString("TaxIdentificationNumber", resourceCulture);
             }
@@ -73,7 +82,7 @@ namespace Amica.Validation {
         /// <summary>
         ///   Looks up a localized string similar to Partita IVA non corretta..
         /// </summary>
-        public static string VatIdentificationNumber {
+        public static string VatIdentificationNumberError {
             get {
                 return ResourceManager.GetString("VatIdentificationNumber", resourceCulture);
             }

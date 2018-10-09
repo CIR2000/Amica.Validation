@@ -7,7 +7,7 @@ namespace Amica.Validation
     {
 		public MailSettingsValidator()
         {
-            RuleFor(x => x.Template).SetCollectionValidator(new MailTemplateValidator());
+            RuleForEach(x => x.Template).SetValidator(new MailTemplateValidator());
         }
     }
 }

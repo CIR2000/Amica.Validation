@@ -12,5 +12,10 @@ namespace Validation.Tests
         {
             AssertRequired(x => x.Name);
         }
+		[TestMethod]
+		public void FromAddressMustBeValid()
+        {
+            AssertValidEmail(c => c.FromAddress);
+        }
     }
 }

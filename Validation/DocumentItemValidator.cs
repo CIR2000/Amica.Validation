@@ -14,7 +14,7 @@ namespace Amica.Validation
             RuleFor(x => x.Order).SetValidator(new OrderReferenceValidator());
             RuleFor(x => x.Vat).SetValidator(new VatValidator());
             RuleFor(x => x.Warehouse).SetValidator(new WarehouseValidator());
-            RuleFor(x => x.VariationCollection).SetCollectionValidator(new VariationValidator());
+            RuleForEach(x => x.VariationCollection).SetValidator(new VariationValidator());
         }
     }
 }
