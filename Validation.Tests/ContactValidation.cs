@@ -25,12 +25,6 @@ namespace Validation.Tests
         }
 
         [TestMethod]
-        public void EinvoiceIdLength()
-        {
-            AssertMinMaxLength(c => c.EinvoiceId, 6, 7);
-        }
-
-        [TestMethod]
         public void ContactIsMustBeValid()
         {
             validator.ShouldNotHaveValidationErrorFor(c => c.Relationship, new Relationship { IsActive = true });
@@ -53,6 +47,11 @@ namespace Validation.Tests
         public void OtherAddressesHasChildValidator()
         {
             validator.ShouldHaveChildValidator(c => c.OtherAddresses, typeof(ShippingAddressValidator));
+        }
+        [TestMethod]
+        public void SalesSettingsHasChildValidator()
+        {
+            validator.ShouldHaveChildValidator(c => c.SalesSettings, typeof(SalesSettingsValidator));
         }
     }
 }

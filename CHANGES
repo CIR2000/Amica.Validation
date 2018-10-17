@@ -1,6 +1,15 @@
 Changelog
 =========
 
+v0.0.18
+=======
+
+Released on October 17, 2018.
+
+- Contact.IdCode is now Required.
+- Contact.SalesSettings has now a proper validator.
+- Validation of Contact.EInvoiceId has been replaced with validation of SalesSettings.EInvoiceId.
+
 v0.0.17
 =======
 

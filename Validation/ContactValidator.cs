@@ -1,5 +1,4 @@
-﻿using System;
-using Amica.Models;
+﻿using Amica.Models;
 using FluentValidation;
 
 namespace Amica.Validation
@@ -9,6 +8,7 @@ namespace Amica.Validation
         public ContactValidator()
         {
             RuleFor(contact => contact.Name).NotEmpty();
+            RuleFor(contact => contact.IdCode).NotEmpty();
 
             RuleFor(contact => contact.VatIdentificationNumber)
                 .Must(ValidatorHelpers.BeValidVatNumber)
@@ -19,7 +19,6 @@ namespace Amica.Validation
                 .WithMessage(ErrorMessages.TaxIdentificationNumberError)
                 .When(c => c.TaxIdentificationNumber != null);
 
-            RuleFor(contact => contact.EinvoiceId).MinimumLength(6).MaximumLength(7).When(contact => contact.EinvoiceId!=null);
 
             // TODO WithMessage, localized
             RuleFor(contact => contact.Relationship).Must(BeValidRelationship);
@@ -28,6 +27,8 @@ namespace Amica.Validation
 
             RuleForEach(contact => contact.OtherAddresses).
                 SetValidator(new ShippingAddressValidator());
+            RuleFor(contact => contact.SalesSettings).
+                SetValidator(new SalesSettingsValidator());
         }
 
         private static bool BeValidRelationship(Relationship relationship)
