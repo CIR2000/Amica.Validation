@@ -8,35 +8,35 @@ namespace Validation.Tests
     [TestClass]
     public class PaymentValidation : BaseTestClass<Payment, PaymentValidator>
     {
-		[TestMethod]
-		public void NameIsRequired()
+        [TestMethod]
+        public void NameIsRequired()
         {
             AssertRequired(p => p.Name);
         }
-		[TestMethod]
-		public void FirstPaymentOptionIsRequired()
+        [TestMethod]
+        public void FirstPaymentOptionIsRequired()
         {
             AssertRequired(p => p.FirstPaymentOption);
         }
-		[TestMethod]
-		public void FirstPaymentOptionMustBeValid()
+        [TestMethod]
+        public void FirstPaymentOptionMustBeValid()
         {
             foreach (var o in PaymentHelpers.FirstPaymentOptions)
-                validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentOption, o.Value);
+                validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentOption, o);
         }
-		[TestMethod]
-		public void FirstPaymentDateIsRequired()
+        [TestMethod]
+        public void FirstPaymentDateIsRequired()
         {
             AssertRequired(p => p.FirstPaymentDate);
         }
-		[TestMethod]
-		public void FirstPaymentDateMustBeValid()
+        [TestMethod]
+        public void FirstPaymentDateMustBeValid()
         {
             foreach (var d in PaymentHelpers.FirstPaymentDates)
-                validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentDate, d.Value);
+                validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentDate, d);
         }
-		[TestMethod]
-		public void PaymentMethodHasChildValidator()
+        [TestMethod]
+        public void PaymentMethodHasChildValidator()
         {
             validator.ShouldHaveChildValidator(p => p.PaymentMethod, typeof(PaymentMethodValidator));
         }

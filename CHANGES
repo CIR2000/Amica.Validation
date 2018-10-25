@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v0.0.19
+=======
+
+Released on October 25, 2018.
+
+- PaymentHelpers.FirstPaymentDate is now a Collection.
+- PaymentHelpers.FirstPaymentOption is now a Collection.
+
 v0.0.18
 =======
 
