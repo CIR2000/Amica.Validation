@@ -10,27 +10,13 @@ namespace Amica.Validation
         {
             RuleFor(payment => payment.Name).NotEmpty();
 
-            RuleFor(payment => payment.FirstPaymentOption)
-                .Must(BeValidFirstPaymentOption).When(payment => payment.FirstPaymentOption != null)
-                .NotNull();
+            RuleFor(payment => payment.FirstPaymentOption).NotNull();
 
-            RuleFor(payment => payment.FirstPaymentDate)
-                .Must(BeValidFirstPaymentDate).When(payment => payment.FirstPaymentDate != null)
-                .NotNull();
+            RuleFor(payment => payment.FirstPaymentDate).NotNull();
 
             RuleFor(payment => payment.PaymentMethod).SetValidator(new PaymentMethodValidator());
             RuleFor(payment => payment.BankId).Matches(ValidatorHelpers.ValidObjectId);
             RuleFor(payment => payment.FeeId).Matches(ValidatorHelpers.ValidObjectId);
         }
-        private static bool BeValidFirstPaymentOption(FirstPaymentOption challenge)
-        {
-            return PaymentHelpers.FirstPaymentOptions.Contains(challenge);
-        }
-
-        private static bool BeValidFirstPaymentDate(FirstPaymentDate challenge)
-        {
-            return PaymentHelpers.FirstPaymentDates.Contains(challenge);
-        }
-
     }
 }

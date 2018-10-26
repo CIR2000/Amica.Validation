@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v0.0.20
+=======
+
+Released on October 26, 2018.
+
+- PaymentHelpers.FirstPaymentDate rule is simply NotNull.
+- PaymentHelpers.FirstPaymentOption rule is simply NotNull.
+
 v0.0.19
 =======
 
