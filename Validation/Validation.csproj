@@ -4,7 +4,7 @@
     <TargetFramework>netstandard1.4</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Amica.Validation</PackageId>
-    <Version>0.0.20</Version>
+    <Version>0.0.21</Version>
     <Authors>Nicola Iarocci</Authors>
     <Company>CIR 2000</Company>
     <Product>Amica.Validation</Product>
