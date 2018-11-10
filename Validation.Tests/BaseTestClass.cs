@@ -12,7 +12,7 @@ using Amica.Validation;
 namespace Validation.Tests
 {
     [TestClass]
-    public abstract class BaseTestClass<TClass, TValidator> 
+    public abstract class BaseTestClass<TClass, TValidator>
         where TClass : ObservableObject, new()
         where TValidator : IValidator<TClass>
     {
@@ -26,7 +26,7 @@ namespace Validation.Tests
             challenge = Activator.CreateInstance<TClass>();
         }
 
-        protected void AssertOptional<T>(Expression<Func<TClass, T>> outExpr )
+        protected void AssertOptional<T>(Expression<Func<TClass, T>> outExpr)
         {
             var prop = GetProperty(outExpr);
 
@@ -40,17 +40,17 @@ namespace Validation.Tests
             }
 
         }
-        protected void AssertRequired<T>(Expression<Func<TClass, T>> outExpr, string expectedErrorCode=null)
+        protected void AssertRequired<T>(Expression<Func<TClass, T>> outExpr, string expectedErrorCode = null)
         {
             var prop = GetProperty(outExpr);
             var type = typeof(T);
 
             if (expectedErrorCode == null)
             {
-                expectedErrorCode = 
-                    (type != typeof(string) && 
+                expectedErrorCode =
+                    (type != typeof(string) &&
                     !IsNumericType(type) &&
-                    !type.IsEnum) ?  "NotNullValidator" :  "NotEmptyValidator";
+                    !type.IsEnum) ? "NotNullValidator" : "NotEmptyValidator";
             }
 
             prop.SetValue(challenge, null);
@@ -69,26 +69,26 @@ namespace Validation.Tests
                 validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorCode(expectedErrorCode);
             }
         }
-        protected void AssertMinMaxLength(Expression<Func<TClass, string>> outExpr, int min, int max, char filler='x')
+        protected void AssertMinMaxLength(Expression<Func<TClass, string>> outExpr, int min, int max, char filler = 'x')
         {
             var prop = GetProperty(outExpr);
 
-            prop.SetValue(challenge, new string(filler, max+1));
+            prop.SetValue(challenge, new string(filler, max + 1));
             validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorCode("MaximumLengthValidator");
-            prop.SetValue(challenge, new string(filler, min-1));
+            prop.SetValue(challenge, new string(filler, min - 1));
             validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorCode("MinimumLengthValidator");
             prop.SetValue(challenge, new string(filler, min));
             validator.ShouldNotHaveValidationErrorFor(outExpr, challenge);
             prop.SetValue(challenge, new string(filler, max));
             validator.ShouldNotHaveValidationErrorFor(outExpr, challenge);
         }
-        protected void AssertLength(Expression<Func<TClass, string>> outExpr, int length, char filler='x', string expectedErrorCode="ExactLengthValidator")
+        protected void AssertLength(Expression<Func<TClass, string>> outExpr, int length, char filler = 'x', string expectedErrorCode = "ExactLengthValidator")
         {
             var prop = GetProperty(outExpr);
 
-            prop.SetValue(challenge, new string(filler, length+1));
+            prop.SetValue(challenge, new string(filler, length + 1));
             validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorCode(expectedErrorCode);
-            prop.SetValue(challenge, new string(filler, length-1));
+            prop.SetValue(challenge, new string(filler, length - 1));
             validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorCode(expectedErrorCode);
             prop.SetValue(challenge, new string(filler, length));
             validator.ShouldNotHaveValidationErrorFor(outExpr, challenge);
@@ -97,7 +97,7 @@ namespace Validation.Tests
         {
             var prop = GetProperty(outExpr);
             prop.SetValue(challenge, string.Empty);
-			validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorMessage(ErrorMessages.MailAddressError);
+            validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorMessage(ErrorMessages.MailAddressError);
             prop.SetValue(challenge, "fakeemail");
             validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorMessage(ErrorMessages.MailAddressError);
             prop.SetValue(challenge, "mail@mail");
@@ -106,30 +106,30 @@ namespace Validation.Tests
             validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorMessage(ErrorMessages.MailAddressError);
             prop.SetValue(challenge, @"test\@test@iana.org");
             validator.ShouldHaveValidationErrorFor(outExpr, challenge).WithErrorMessage(ErrorMessages.MailAddressError);
-            prop.SetValue(challenge,  "mail@mail.it.com");
-			validator.ShouldNotHaveValidationErrorFor(outExpr, challenge); 
+            prop.SetValue(challenge, "mail@mail.it.com");
+            validator.ShouldNotHaveValidationErrorFor(outExpr, challenge);
 
-            prop.SetValue(challenge,  "mail@mail.it");
-			validator.ShouldNotHaveValidationErrorFor(outExpr, challenge);
-            prop.SetValue(challenge,  null);
+            prop.SetValue(challenge, "mail@mail.it");
+            validator.ShouldNotHaveValidationErrorFor(outExpr, challenge);
+            prop.SetValue(challenge, null);
             validator.ShouldNotHaveValidationErrorFor(outExpr, challenge);
         }
         protected void AssertValidVatIdentificationNumber(Expression<Func<TClass, string>> outExpr)
         {
             var prop = GetProperty(outExpr);
 
-            var invalid = new string[] {string.Empty, "A", "01180680397", "92078790398", "02182030391", "01180680399", "UK01180680397", "IT01180680399"};
-			foreach(var idCode in invalid)
+            var invalid = new string[] { string.Empty, "A", "01180680397", "92078790398", "02182030391", "01180680399", "UK01180680397", "IT01180680399" };
+            foreach (var idCode in invalid)
             {
                 prop.SetValue(challenge, idCode);
-				validator.ShouldHaveValidationErrorFor(outExpr, idCode).WithErrorMessage(ErrorMessages.VatIdentificationNumberError);
+                validator.ShouldHaveValidationErrorFor(outExpr, idCode).WithErrorMessage(ErrorMessages.VatIdentificationNumberError);
             }
 
-            var valid = new string[] {null, "IT01180680397", "IT02182030391"};
+            var valid = new string[] { null, "IT01180680397", "IT02182030391" };
             foreach (var idCode in valid)
             {
                 prop.SetValue(challenge, idCode);
-				validator.ShouldNotHaveValidationErrorFor(outExpr, value:idCode);
+                validator.ShouldNotHaveValidationErrorFor(outExpr, value: idCode);
             }
         }
         protected void AssertValidTaxIdentificationNumber(Expression<Func<TClass, string>> outExpr)
@@ -151,7 +151,7 @@ namespace Validation.Tests
             foreach (var idCode in invalid)
             {
                 prop.SetValue(challenge, idCode);
-                validator.ShouldHaveValidationErrorFor(outExpr, value:idCode).WithErrorMessage(ErrorMessages.TaxIdentificationNumberError);
+                validator.ShouldHaveValidationErrorFor(outExpr, value: idCode).WithErrorMessage(ErrorMessages.TaxIdentificationNumberError);
             }
 
 
@@ -174,12 +174,12 @@ namespace Validation.Tests
         public void AssertCollectionCannotBeEmpty<T>(Expression<Func<TClass, List<T>>> outExpr)
         {
             var prop = GetProperty(outExpr);
-            
+
             var r = validator.Validate(challenge);
             Assert.AreEqual("notempty_error", r.Errors.FirstOrDefault(x => x.PropertyName == prop.Name).ErrorCode);
 
         }
-		public void AssertIsValidObjectId<T>(Expression<Func<TClass, string>> outExpr)
+        public void AssertIsValidObjectId<T>(Expression<Func<TClass, string>> outExpr)
         {
             validator.ShouldHaveValidationErrorFor(outExpr, value: string.Empty);
             validator.ShouldHaveValidationErrorFor(outExpr, value: "1234");
@@ -203,5 +203,8 @@ namespace Validation.Tests
         {
             return NumericTypes.Contains(type) || NumericTypes.Contains(Nullable.GetUnderlyingType(type));
         }
+        // private static bool IsInEnum<T>(Expression<Func<TClass, T>> outExpr){
+
+        // }
     }
 }
