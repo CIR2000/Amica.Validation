@@ -1,4 +1,5 @@
-﻿using Amica.Models;
+﻿using System.Collections.Generic;
+using Amica.Models;
 using Amica.Validation;
 using FluentValidation;
 using FluentValidation.TestHelper;
@@ -48,6 +49,18 @@ namespace Validation.Tests {
             challenge.Description = "description";
             validator.ShouldNotHaveValidationErrorFor(p => p.Name, challenge);
             validator.ShouldNotHaveValidationErrorFor(p => p.Description, challenge);
+        }
+		[TestMethod]
+		public void PricesCannotBeNull() {
+            challenge.Prices = null;
+            validator.ShouldHaveValidationErrorFor(x => x.Prices, challenge);
+
+            challenge.Prices = new List<ProductPrice>();
+            validator.ShouldNotHaveValidationErrorFor(x => x.Prices, challenge);
+        }
+		[TestMethod]
+		public void PricesHasChildValidator() {
+            validator.ShouldHaveChildValidator(x => x.Prices, typeof(ProductPriceValidator));
         }
     }
 }

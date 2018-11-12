@@ -12,6 +12,12 @@ namespace Amica.Validation {
             RuleFor(product => product.Description)
                 .NotEmpty()
                 .When(product => string.IsNullOrEmpty(product.Name));
+
+            RuleFor(product => product.Prices)
+                .NotNull();
+
+            RuleForEach(product => product.Prices)
+                .SetValidator(new ProductPriceValidator());
         }
     }
 }
