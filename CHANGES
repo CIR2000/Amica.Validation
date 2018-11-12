@@ -4,6 +4,8 @@ Changelog
 v0.0.23
 =======
 
+Released on November 12, 2018.
+
 - Validation for PriceList model.
 - Validation for ProductPrice model.
 - Validation for Product.Prices property.
