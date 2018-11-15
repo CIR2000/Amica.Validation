@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Amica.Models;
+﻿using Amica.Models;
 using Amica.Validation;
 using FluentValidation.TestHelper;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Validation.Tests
 {
@@ -13,38 +13,51 @@ namespace Validation.Tests
         {
             AssertRequired(p => p.Name);
         }
+
         [TestMethod]
         public void FirstPaymentOptionIsRequired()
         {
             AssertRequired(p => p.FirstPaymentOption);
         }
+
         [TestMethod]
         public void FirstPaymentOptionMustBeValid()
         {
             foreach (var o in PaymentHelpers.FirstPaymentOptions)
                 validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentOption, o);
         }
+
         [TestMethod]
         public void FirstPaymentDateIsRequired()
         {
             AssertRequired(p => p.FirstPaymentDate);
         }
+
         [TestMethod]
         public void FirstPaymentDateMustBeValid()
         {
             foreach (var d in PaymentHelpers.FirstPaymentDates)
                 validator.ShouldNotHaveValidationErrorFor(p => p.FirstPaymentDate, d);
         }
+
+        [TestMethod]
+        public void PaymentMethodIsRequired()
+        {
+            AssertRequired(p => p.PaymentMethod);
+        }
+
         [TestMethod]
         public void PaymentMethodHasChildValidator()
         {
             validator.ShouldHaveChildValidator(p => p.PaymentMethod, typeof(PaymentMethodValidator));
         }
+
         [TestMethod]
         public void BankIdIsValidObjectId()
         {
             AssertIsValidObjectId<Payment>(x => x.BankId);
         }
+
         [TestMethod]
         public void FeeIdIsValidObjectId()
         {
