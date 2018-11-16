@@ -5,15 +5,16 @@ namespace Amica.Validation
 {
     public class PaymentMethodValidator : AbstractValidator<Models.PaymentMethod>
     {
-		public PaymentMethodValidator()
+        public PaymentMethodValidator()
         {
             RuleFor(method => method.Name).NotEmpty();
 
             RuleFor(method => method.Code)
-				.Must(BeValidPaymentMethod).When(method => method.Code != null);
+                .NotEmpty()
+                .Must(BeValidPaymentMethod);
         }
 
-		private static bool BeValidPaymentMethod(string challenge)
+        private static bool BeValidPaymentMethod(string challenge)
         {
             if (challenge == string.Empty) return true;
 
