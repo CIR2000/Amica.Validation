@@ -2,9 +2,12 @@
 using Amica.Models;
 using FluentValidation;
 
-namespace Amica.Validation {
-    public class ProductValidator : AbstractValidator<Product> {
-        public ProductValidator() {
+namespace Amica.Validation
+{
+    public class ProductValidator : AbstractValidator<Product>
+    {
+        public ProductValidator()
+        {
             RuleFor(product => product.Name)
                 .NotEmpty()
                 .When(product => string.IsNullOrEmpty(product.Description));
@@ -18,6 +21,9 @@ namespace Amica.Validation {
 
             RuleForEach(product => product.Prices)
                 .SetValidator(new ProductPriceValidator());
+
+            RuleForEach(product => product.Inventory)
+                .SetValidator(new ProductInventoryValidator());
         }
     }
 }

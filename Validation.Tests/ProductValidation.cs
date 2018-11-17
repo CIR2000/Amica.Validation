@@ -5,11 +5,14 @@ using FluentValidation;
 using FluentValidation.TestHelper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Validation.Tests {
+namespace Validation.Tests
+{
     [TestClass]
-    public class ProductValidation : BaseTestClass<Product, ProductValidator> {
+    public class ProductValidation : BaseTestClass<Product, ProductValidator>
+    {
         [TestMethod]
-        public void NameAndDescriptionAreMutuallyRequired() {
+        public void NameAndDescriptionAreMutuallyRequired()
+        {
             challenge.Name = null;
             challenge.Description = null;
             validator.ShouldHaveValidationErrorFor(p => p.Name, challenge);
@@ -50,17 +53,27 @@ namespace Validation.Tests {
             validator.ShouldNotHaveValidationErrorFor(p => p.Name, challenge);
             validator.ShouldNotHaveValidationErrorFor(p => p.Description, challenge);
         }
-		[TestMethod]
-		public void PricesCannotBeNull() {
+
+        [TestMethod]
+        public void PricesCannotBeNull()
+        {
             challenge.Prices = null;
             validator.ShouldHaveValidationErrorFor(x => x.Prices, challenge);
 
             challenge.Prices = new List<ProductPrice>();
             validator.ShouldNotHaveValidationErrorFor(x => x.Prices, challenge);
         }
-		[TestMethod]
-		public void PricesHasChildValidator() {
+
+        [TestMethod]
+        public void PricesHasChildValidator()
+        {
             validator.ShouldHaveChildValidator(x => x.Prices, typeof(ProductPriceValidator));
+        }
+
+        [TestMethod]
+        public void InentoryHasChildValidator()
+        {
+            validator.ShouldHaveChildValidator(x => x.Inventory, typeof(ProductInventoryValidator));
         }
     }
 }

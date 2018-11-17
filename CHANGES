@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v0.0.26
+=======
+
+- Validation for ProductInventory model.
+- Validation for Product.Inventory property.
+
 v0.0.25
 =======
 
